@@ -119,6 +119,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "Webseite-Horvart"
+    }
+  },
+  "defaultProject": "Webseite-Horvart",
+  "cli": {
+    "analytics": false
+  }
 }
