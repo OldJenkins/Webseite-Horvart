@@ -1,0 +1,16 @@
+.nav{
+    margin-top: 50px;
+    display:flex;
+    justify-content: space-between;
+}
+.nav2{
+    margin: 10px;
+    text-align: left;
+}
+.navlogo{
+    
+    text-align: center;
+}
+.navadmin{
+    text-align: right;
+}
