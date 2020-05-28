@@ -5,6 +5,7 @@
 }
 .nav2{
     margin: 10px;
+    margin-top: 10px;
     text-align: left;
 }
 .navlogo{
@@ -12,5 +13,6 @@
     text-align: center;
 }
 .navadmin{
+    margin-right: 10px;
     text-align: right;
 }
