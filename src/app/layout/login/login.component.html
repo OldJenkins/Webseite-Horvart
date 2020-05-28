@@ -1,0 +1,53 @@
+<div class="wrapper fadeInDown">
+  <div id="formContent">
+    <!-- Tabs Titles -->
+    <a class="active"> Sign In </a>
+    <a class="inactive underlineHover" onclick="myFunction()">Registrieren </a>
+    <button id="test" onclick="myFunction()">Click mich</button>
+
+    
+
+    <!-- Icon -->
+    <div class="fadeIn first">
+      <img src="https://image.flaticon.com/icons/svg/2935/2935025.svg" id="icon" alt="User Icon" />
+    </div>
+
+ 
+
+    <!-- Login Form -->
+    <form>
+      <input type="text" id="login" class="fadeIn second" name="login" placeholder="login">
+      <input type="text" id="password" class="fadeIn third" name="login" placeholder="passwort">
+      <input type="text" id="repeat" class="fadeIn third" name="login" placeholder="Passwort wiederholen" style="visibility: hidden">
+      <input id="loginB" type="submit" class="fadeIn fourth" value="Anmelden">
+      <input type="submit" class="fadeIn fourth" value="Log In with Google">
+    </form>
+
+ 
+
+    <!-- Remind Passowrd -->
+    <div id="formFooter">
+      <a id="FuckYou" class="underlineHover" href="#">Forgot Password?</a>
+    </div>
+
+ 
+
+  </div>
+</div>
+
+
+<script>
+  function myFunction() {
+    document.getElementById("repeat").style.cssText = "visibility: visible";
+    document.getElementById("login").Value = "E-Mail";
+    document.getElementById("loginB").Value = "Regestrieren"
+  }
+
+  $("#test").click(function(){
+    document.getElementById("repeat").style.cssText = "visibility: visible";
+    document.getElementById("login").placeholder = "E-Mail";
+    document.getElementById("loginB").Value = "Regestrieren";
+  });
+
+
+</script>
