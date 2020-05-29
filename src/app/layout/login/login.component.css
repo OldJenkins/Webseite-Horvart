@@ -29,13 +29,13 @@ a {
   color: #cccccc;
 }
 
-#FuckYou {
+#change {
 
-  color: #92badd;
+  color: #3aeaf0;
   display:inline-block;
   text-decoration: none;
   font-weight: 400;
-
+  text-shadow: 5px 5px 30px  #3aeaf0;
 }
  
 
@@ -102,15 +102,15 @@ h2 {
 
  
 
-h2.inactive {
+a.inactive {
   color: #cccccc;
 }
 
  
 
-h2.active {
+a.active {
   color: #d8d8d8;
-  border-bottom: 2px solid #5fbae9;
+  border-bottom: 2px solid #81e9fc;
 }
 
  
