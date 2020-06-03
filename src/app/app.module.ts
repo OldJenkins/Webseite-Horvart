@@ -8,18 +8,29 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule } from '@angular/forms';
 
 import { ImageCropperModule } from 'ngx-image-cropper';
+import { CardComponent } from './card/card.component';
+import { CropperComponent } from './cropper/cropper.component';
+import { GridComponent } from './grid/grid.component';
+import {MatGridListModule} from '@angular/material/grid-list';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
     AppComponent,
-    CarouselComponent
+    CarouselComponent,
+    CardComponent,
+    CropperComponent,
+    GridComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     NgbModule,
+    MatGridListModule,
+    BrowserAnimationsModule,
     FormsModule,
-    ImageCropperModule
+    ImageCropperModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
