@@ -10,18 +10,10 @@ export class TextpostService {
   textposts: Observable<TextPost[]>;
   textpostsDoc: AngularFirestoreDocument<TextPost>;
 
+
   constructor(public afs: AngularFirestore) { 
     
-    this.textposts = this.afs.collection('textpost').snapshotChanges().pipe(map(changes => {
-      return changes.map(a=>{
-        const data = a.payload.doc.data() as TextPost
-        data.id = a.payload.doc.id;
-        return data;
-      });
-    }));
-
-    //this.usersCollection = this.afs.collection('User');
-    this.textpostsCollection = this.afs.collection('textpost');
+    this.textpostsCollection = this.afs.collection('textposts');
     this.textposts = this.afs.collection('textpost').snapshotChanges().pipe(map(changes => {
       return changes.map(a=>{
         const data = a.payload.doc.data() as TextPost
@@ -30,6 +22,7 @@ export class TextpostService {
       });
     }));
   }
+
 
   getTextPosts(){
     return this.textposts;

@@ -63,10 +63,9 @@
           
         </div>
         <div class="card-action">
-          <a href="#">Edit</a>
-          <a href="#">Minimize</a>
-          <button class="btn" (click)="editItem($event,user)">edit</button>
-            <button class="btn black"  (click)="closeItem()">Close</button>
+          <a (click)="editItem($event,user)">Edit</a>
+          <a (click)="closeItem()">Minimize</a>
+          
         </div>
       </div>
     </div>
@@ -77,3 +76,6 @@
     <hr>
     <h5>  Ther are no Users existing</h5>
 </ng-template>
+
+
+<app-add-item></app-add-item>

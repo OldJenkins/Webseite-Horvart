@@ -9,9 +9,11 @@ import { TextpostService } from 'src/app/services/textpost.service';
 })
 export class TextSiteComponent implements OnInit {
 
+  //isAdmin: boolean = true;
+
   texts: TextPost[];
   editState: boolean = false;
-  textToEdit: TextPost;
+  textpostToEdit: TextPost;
 
   constructor(private textpostService: TextpostService) { }
 
@@ -28,7 +30,7 @@ export class TextSiteComponent implements OnInit {
 
   editItem(event, textpost: TextPost){
     this.editState = true;
-    this.textToEdit = textpost;
+    this.textpostToEdit = textpost;
   }
 
   updateText(textpost: TextPost){

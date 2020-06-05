@@ -12,7 +12,7 @@ export class ImagepostService {
 
   constructor(public afs: AngularFirestore) { 
     
-    this.imageposts = this.afs.collection('imageposts').snapshotChanges().pipe(map(changes => {
+    this.imageposts = this.afs.collection('imagepost').snapshotChanges().pipe(map(changes => {
       return changes.map(a=>{
         const data = a.payload.doc.data() as ImagePost
         data.id = a.payload.doc.id;
@@ -21,8 +21,8 @@ export class ImagepostService {
     }));
 
     //this.usersCollection = this.afs.collection('User');
-    this.imagepostsCollection = this.afs.collection('imageposts');
-    this.imageposts = this.afs.collection('imageposts').snapshotChanges().pipe(map(changes => {
+    this.imagepostsCollection = this.afs.collection('imagepost');
+    this.imageposts = this.afs.collection('imagepost').snapshotChanges().pipe(map(changes => {
       return changes.map(a=>{
         const data = a.payload.doc.data() as ImagePost
         data.id = a.payload.doc.id;
@@ -40,12 +40,12 @@ export class ImagepostService {
   }
 
   deleteImagepost(imagepost: ImagePost){
-    this.imagepostsDoc = this.afs.doc(`imageposts/${imagepost.id}`);
+    this.imagepostsDoc = this.afs.doc(`imagepost/${imagepost.id}`);
     this.imagepostsDoc.delete();
   }
 
   updateImagepost(imagepost: ImagePost){
-    this.imagepostsDoc = this.afs.doc(`imageposts/${imagepost.id}`);
+    this.imagepostsDoc = this.afs.doc(`imagepost/${imagepost.id}`);
     this.imagepostsDoc.update(imagepost);
   }
 

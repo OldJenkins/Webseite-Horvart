@@ -12,15 +12,7 @@ export class UserService {
 
   constructor(public afs: AngularFirestore) { 
     
-    this.users = this.afs.collection('users').snapshotChanges().pipe(map(changes => {
-      return changes.map(a=>{
-        const data = a.payload.doc.data() as User
-        data.id = a.payload.doc.id;
-        return data;
-      });
-    }));
-
-    //this.usersCollection = this.afs.collection('User');
+  
     this.usersCollection = this.afs.collection('users');
     this.users = this.afs.collection('users').snapshotChanges().pipe(map(changes => {
       return changes.map(a=>{
