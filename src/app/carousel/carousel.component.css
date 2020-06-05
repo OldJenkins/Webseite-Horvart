@@ -1,0 +1,15 @@
+
+.picsum-img-wrapper {
+    max-width: 1000px;
+    max-height: 920px;
+    position: relative;
+    margin-left: 250px;
+    margin-right: 100px;
+  } 
+
+.slide {
+    max-width: 2000px;
+    position: relative;
+    margin: auto; 
+    background-color: rgb(45, 52, 54);
+    }

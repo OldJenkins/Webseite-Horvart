@@ -3,6 +3,14 @@ import { NgModule } from '@angular/core';
 import { FormsModule} from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { CarouselComponent } from './carousel/carousel.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { ImageCropperModule } from 'ngx-image-cropper';
+import { CardComponent } from './card/card.component';
+import { CropperComponent } from './cropper/cropper.component';
+import { GridComponent } from './grid/grid.component';
+import {MatGridListModule} from '@angular/material/grid-list';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFirestoreModule } from'angularfire2/firestore';
 import { environment } from '../environments/environment';
@@ -24,6 +32,11 @@ import { TextSiteComponent } from './components/text-site/text-site.component';
 @NgModule({
   declarations: [
     AppComponent,
+
+    CarouselComponent,
+    CardComponent,
+    CropperComponent,
+    GridComponent,
     UsersComponent,
     NavbarComponent,
     AddItemComponent,
@@ -34,14 +47,22 @@ import { TextSiteComponent } from './components/text-site/text-site.component';
     VideoSiteComponent,
     TextSiteComponent
     
+
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    NgbModule,
+    MatGridListModule,
+    BrowserAnimationsModule,
+    FormsModule,
+    ImageCropperModule,
+    BrowserAnimationsModule,
     FormsModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule
     
+
   ],
   providers: [UserService,ImagepostService,VideopostService,TextpostService],
   bootstrap: [AppComponent]
