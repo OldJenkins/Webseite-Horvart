@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ImagePost } from '../models/ImagePost';
-import { ImagepostService } from '../services/imagepost.service'; 
+import { ImagePost } from '../../models/ImagePost';
+import { ImagepostService } from '../../services/imagepost.service'; 
 
 
 @Component({

@@ -27,6 +27,9 @@ import { FooterComponent } from './components/footer/footer.component';
 import { ImageSiteComponent } from './components/image-site/image-site.component';
 import { VideoSiteComponent } from './components/video-site/video-site.component';
 import { TextSiteComponent } from './components/text-site/text-site.component';
+import { TestnormanComponent } from './components/testnorman/testnorman.component';
+import { TestlunaComponent } from './components/testluna/testluna.component';
+import { TestmarcelComponent } from './components/testmarcel/testmarcel.component';
 
 
 @NgModule({
@@ -44,7 +47,10 @@ import { TextSiteComponent } from './components/text-site/text-site.component';
     FooterComponent,
     ImageSiteComponent,
     VideoSiteComponent,
-    TextSiteComponent
+    TextSiteComponent,
+    TestnormanComponent,
+    TestlunaComponent,
+    TestmarcelComponent
     
   ],
   imports: [
