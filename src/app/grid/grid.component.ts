@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ImagePost } from '../models/ImagePost';
+import { ImagepostService } from '../services/imagepost.service'; 
 
 
 @Component({
@@ -8,9 +10,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class GridComponent implements OnInit {
 
-  constructor() { }
+  imagePost: ImagePost[];
+
+  constructor(private imagePostService: ImagepostService) {}
 
   ngOnInit(): void {
+    this.imagePostService.getImagePosts().subscribe(response => {
+      this.imagePost = response;
+    })
   }
 
 }
