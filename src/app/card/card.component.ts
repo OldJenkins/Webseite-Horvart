@@ -8,8 +8,23 @@ import { Component, OnInit } from '@angular/core';
 export class CardComponent implements OnInit {
 
   constructor() { }
+  isAdmin = false;
 
-  ngOnInit(): void {
+  ngOnInit(){
+    if(this.isAdmin){
+      this.showThis();
+    }else{
+      this.dontShowThis();
+    }
   }
+
+  showThis(){
+
+  }
+
+  dontShowThis(){
+
+  }
+
 
 }
