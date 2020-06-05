@@ -1,0 +1,47 @@
+<div class="wrapper fadeInDown">
+  <div id="formContent">
+    <!-- Tabs Titles -->
+    <a id="SI" src="#" class="active underlineHover" (click)="SignIn()"> Sign In </a>
+    <a id="Rg" src="#" class="inactive underlineHover" (click)="register()">Registrieren </a>
+    
+
+    <!-- Icon -->
+    <div class="fadeIn first">
+      <img src="https://image.flaticon.com/icons/svg/2935/2935025.svg" id="icon" alt="User Icon" />
+    </div>
+
+ 
+
+    <!-- Login Form -->
+    <form>
+      <input type="text" id="login" class="fadeIn second" name="login" placeholder="E-Mail">
+      <input type="text" id="password" class="fadeIn third" name="login" placeholder="Passwort">
+      <input type="text" id="repeat" class="fadeIn third" name="login" placeholder="Passwort wiederholen" style="visibility: hidden">
+      <input id="loginB" type="submit" class="fadeIn fourth" value={{help}}>
+      <input id="google" type="submit" class="fadeIn fourth" value="Log In with Google">
+    </form>
+
+
+
+    <!-- Remind Passowrd -->
+    <div id="formFooter">
+      <a id="change" class="underlineHover" href="#">Forgot Password?</a>
+    </div>
+
+ 
+
+  </div>
+</div>
+
+
+<script>
+
+  $("#test").click(function(){
+    document.getElementById("repeat").style.cssText = "visibility: visible";
+    document.getElementById("login").placeholder = "E-Mail";
+    document.getElementById("loginB").Value = "Regestrieren";
+    document.getElementsByClassName("active").border = none;
+  });
+
+
+</script>
