@@ -13,6 +13,8 @@ export class ImageSiteComponent implements OnInit {
   editState: boolean = false;
   imagepostToEdit: ImagePost;
 
+  isAdmin : boolean = true;
+
   constructor(private imagepostService: ImagepostService) { }
 
   ngOnInit(): void {
