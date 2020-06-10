@@ -1,1 +1,57 @@
-<p>video-site works!</p>
+<div class="container">
+  <!-- Page Content goes here -->
+
+
+
+  <div class="container">
+  
+    <div class="row">
+
+      <div class="col s4">
+        <!-- Promo Content 1 goes here -->
+        <h1 class="truncate">Here are some big Vids</h1>
+        <p>We did most of the heavy lifting for you to provide a default stylings that incorporate our custom components.</p>
+      </div>
+      <div class="col s4">
+        <!-- Promo Content 2 goes here -->
+        <h1> Alwasy find dthe newest Big Vids</h1>
+        <p>By utilizing elements and principles of Material Design, we were able to create a framework that focuses on User Experience.
+
+        </p>
+      </div>
+      <div class="col s4">
+        <!-- Promo Content 3 goes here -->
+        <h1> Permium exclusive content </h1>
+        <p>We have provided detailed documentation as well as specific code examples to help new users get started.</p>
+      </div>
+
+    </div>
+  </div>
+
+    <div *ngIf="videoPosts?.length > 0;else noVideos">
+      <div class="row" style="width: 500px;height: 500px;">
+        <div class="col s12 m7" *ngFor="let videopost of videoPosts">
+          <div class="card">
+            <div class="card-image">
+              <mat-video title="hallo" [preload]="true" src="{{videopost.path}}" ></mat-video>
+
+              <span class="card-title">{{videopost.title}}</span>
+            </div>
+            <div class="card-content">
+              <p>I am a very simple card. I am good at containing small bits of information.
+              I am convenient because I require little markup to use effectively.</p>
+            </div>
+            <div class="card-action">
+              <a href="#">This is a link</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      </div>
+
+    <ng-template #noVideos>
+        <hr>
+        <h5>  Ther are no Posts existing</h5>
+    </ng-template>
+    
+</div>

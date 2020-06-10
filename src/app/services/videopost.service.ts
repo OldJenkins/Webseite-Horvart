@@ -12,7 +12,7 @@ export class VideopostService {
 
   constructor(public afs: AngularFirestore) { 
     
-    this.videoposts = this.afs.collection('videoposts').snapshotChanges().pipe(map(changes => {
+    this.videoposts = this.afs.collection('videopost').snapshotChanges().pipe(map(changes => {
       return changes.map(a=>{
         const data = a.payload.doc.data() as VideoPost
         data.id = a.payload.doc.id;
@@ -21,8 +21,8 @@ export class VideopostService {
     }));
 
     //this.usersCollection = this.afs.collection('User');
-    this.videopostsCollection = this.afs.collection('videoposts');
-    this.videoposts = this.afs.collection('videoposts').snapshotChanges().pipe(map(changes => {
+    this.videopostsCollection = this.afs.collection('videopost');
+    this.videoposts = this.afs.collection('videopost').snapshotChanges().pipe(map(changes => {
       return changes.map(a=>{
         const data = a.payload.doc.data() as VideoPost
         data.id = a.payload.doc.id;
@@ -40,12 +40,12 @@ export class VideopostService {
   }
 
   deleteVideopost(videopost: VideoPost){
-    this.videopostsDoc = this.afs.doc(`videoposts/${videopost.id}`);
+    this.videopostsDoc = this.afs.doc(`videopost/${videopost.id}`);
     this.videopostsDoc.delete();
   }
 
   updateVideopost(videopost: VideoPost){
-    this.videopostsDoc = this.afs.doc(`videoposts/${videopost.id}`);
+    this.videopostsDoc = this.afs.doc(`videopost/${videopost.id}`);
     this.videopostsDoc.update(videopost);
   }
 

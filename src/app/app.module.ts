@@ -31,6 +31,8 @@ import { TestnormanComponent } from './components/testnorman/testnorman.componen
 import { TestlunaComponent } from './components/testluna/testluna.component';
 import { TestmarcelComponent } from './components/testmarcel/testmarcel.component';
 
+import { MatVideoModule } from 'mat-video';
+
 
 @NgModule({
   declarations: [
@@ -61,12 +63,9 @@ import { TestmarcelComponent } from './components/testmarcel/testmarcel.componen
     BrowserAnimationsModule,
     FormsModule,
     ImageCropperModule,
-    BrowserAnimationsModule,
-    FormsModule,
     AngularFireModule.initializeApp(environment.firebase),
-    AngularFirestoreModule
-    
-
+    AngularFirestoreModule,
+    MatVideoModule
   ],
   providers: [UserService,ImagepostService,VideopostService,TextpostService],
   bootstrap: [AppComponent]
