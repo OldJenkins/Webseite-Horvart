@@ -1,40 +1,45 @@
-
-import { Component, ViewChild } from '@angular/core';
-import { NgbCarousel, NgbSlideEvent, NgbSlideEventSource } from '@ng-bootstrap/ng-bootstrap';
+import { Component, OnInit, Input } from '@angular/core';
+import { ImagepostService } from 'src/app/services/imagepost.service';
+import { ImagePost } from 'src/app/models/ImagePost';
+import { trigger, transition, style, animate } from "@angular/animations";
 
 @Component({
   selector: 'app-carousel',
   templateUrl: './carousel.component.html',
-  styleUrls: ['./carousel.component.css']
+  styleUrls: ['./carousel.component.css'],
+  animations: [
+    trigger('carouselAnimation', [
+      transition('void => *', [
+        style({ opacity: 0 }),
+        animate('300ms', style({ opacity: 1 }))
+      ]),
+      transition('* => void', [
+        animate('300ms', style({ opacity: 0 }))
+      ])
+    ])
+  ]
 })
-export class CarouselComponent {
-  images = [1, 2, 3, 4].map((n) => `/assets/Images/${n}.jpg`); 
-  
+export class CarouselComponent implements OnInit {
 
+  constructor(private picService: ImagepostService){ }
 
-  paused = false;
-  unpauseOnArrow = false;
-  pauseOnIndicator = false;
-  pauseOnHover = true;
+  @Input() images: ImagePost[];
 
+  currentSlide = 0;
 
-  @ViewChild('carousel', {static : true}) carousel: NgbCarousel;
-  togglePaused() {
-    if (this.paused) {
-      this.carousel.cycle();
-    } else {
-      this.carousel.pause();
-    }
-    this.paused = !this.paused;
+  ngOnInit(){
+    this.picService.getImagePosts().subscribe(pics =>{
+      this.images = pics;
+    })
   }
 
-  onSlide(slideEvent: NgbSlideEvent) {
-    if (this.unpauseOnArrow && slideEvent.paused &&
-      (slideEvent.source === NgbSlideEventSource.ARROW_LEFT || slideEvent.source === NgbSlideEventSource.ARROW_RIGHT)) {
-      this.togglePaused();
-    }
-    if (this.pauseOnIndicator && !slideEvent.paused && slideEvent.source === NgbSlideEventSource.INDICATOR) {
-      this.togglePaused();
-    }
+  onPreviousClick() {
+    const previous = this.currentSlide - 1;
+    this.currentSlide = previous < 0 ? this.images.length - 1 : previous;
+  }
+
+  onNextClick() {
+    const next = this.currentSlide + 1;
+    this.currentSlide = next === this.images.length ? 0 : next;
   }
 }
