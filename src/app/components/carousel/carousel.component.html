@@ -1,11 +1,14 @@
-
-<ngb-carousel #carousel [interval]="2500" [pauseOnHover]="pauseOnHover" (slide)="onSlide($event)">
-    <ng-template ngbSlide *ngFor="let img of images; index as i">
-      <a href="https://www.google.fr/?q=Number+{{i+1}}" target="_blank" rel="nofollow noopener noreferrer">
-        <div class="picsum-img-wrapper">
-          <img [src]="img" alt="My image {{i + 1}} description" height="1000">
-        </div>
-      </a>
-    </ng-template>
-  </ngb-carousel>
-<hr>
+<!-- carousel -->
+<div class="carousel">
+    <ng-container *ngFor="let pic of images; let i = index">
+      <img *ngIf="i === currentSlide" [src]="pic.path" class="slide" @carouselAnimation/>
+    </ng-container>
+  
+    <!-- controls -->
+    <button class="control prev" (click)="onPreviousClick()">
+      <span class="arrow left"></span>
+    </button>
+    <button class="control next" (click)="onNextClick()">
+      <span class="arrow right"></span>
+    </button>
+  </div>

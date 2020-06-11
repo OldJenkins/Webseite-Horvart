@@ -1,10 +1,21 @@
+<div class="navbar-fixed">
 <nav>
-    <div class="nav-wrapper black">
-        <a routerLink="Users" routerLinkActive="active" class="btn green"> Users</a>
-        <a routerLink="Images" routerLinkActive="active" class="btn green"> Images</a>
-        <a routerLink="Videos" routerLinkActive="active" class="btn green"> Videos</a>
-        <a routerLink="Texts" routerLinkActive="active" class="btn green"> Texts</a>
-        <a href="/" class="brand-logo center">FS Item Manager</a>
+    <div class="nav-wrapper">
+        <a href="#" class="brand-logo center"><img src="https://image.flaticon.com/icons/svg/2934/2934660.svg" alt="Logo" class="Logo"></a> 
+       <!-- blaues Logo
+           <a href="#" class="brand-logo center"><img src="https://image.flaticon.com/icons/png/512/2935/2935025.png" alt="Logo"></a> -->
+        <ul id="nav-mobile" class="left hide-on-med-and-down">
+            <li><a routerLink="Home" routerLinkActive="active">Home</a></li>
+            <li><a routerLink="Bilder" routerLinkActive="active">Bilder</a></li>
+            <li><a routerLink="Videos" routerLinkActive="active">Videos</a></li>
+            <li><a routerLink="Texte" routerLinkActive="active">Texte</a></li>
+        </ul>
+        
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+          <li><a routerLink="Login" routerLinkActive="active">Login</a></li> 
+        <!-- Icon für Login - funktioniert allerdings nicht 
+            <li><a routerLink="Login" routerLinkActive="active"><i class="material-icons right"><img src="https://image.flaticon.com/icons/svg/2919/2919600.svg" alt="Login" class="Login"></i></a></li>-->
+        </ul>
     </div>
-
 </nav>
+</div>
