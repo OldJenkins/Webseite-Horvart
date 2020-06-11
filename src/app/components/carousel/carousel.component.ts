@@ -1,6 +1,8 @@
 
 import { Component, ViewChild } from '@angular/core';
 import { NgbCarousel, NgbSlideEvent, NgbSlideEventSource } from '@ng-bootstrap/ng-bootstrap';
+import { ImagePost } from '../../models/ImagePost';
+import { ImagepostService } from '../../services/imagepost.service'; 
 
 @Component({
   selector: 'app-carousel',
@@ -9,14 +11,19 @@ import { NgbCarousel, NgbSlideEvent, NgbSlideEventSource } from '@ng-bootstrap/n
 })
 export class CarouselComponent {
   images = [1, 2, 3, 4].map((n) => `/assets/Images/${n}.jpg`); 
-  
-
-
   paused = false;
   unpauseOnArrow = false;
   pauseOnIndicator = false;
   pauseOnHover = true;
+  imagePost: ImagePost[];
 
+  constructor(private imagePostService: ImagepostService) {}
+
+  ngOnInit(): void {
+    this.imagePostService.getImagePosts().subscribe(response => {
+      this.imagePost = response;
+    })
+  }
 
   @ViewChild('carousel', {static : true}) carousel: NgbCarousel;
   togglePaused() {

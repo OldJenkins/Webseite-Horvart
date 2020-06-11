@@ -1,3 +1,43 @@
+
 .btn green{
 margin-left:10px;
 }
+
+a:hover{
+    color: white;
+  /*  color: rgb(178, 190, 195); */
+    text-decoration: none;
+}
+
+.nav-wrapper {
+    background-color: rgb(45, 52, 54); 
+  /*  background-color: rgb(70, 124, 198);
+      background-color: rgb(58, 24, 121);
+      background-color: rgb(134, 141, 36);
+      background-color: rgb(209, 125, 26);
+      background-color: rgb(130, 31, 96);
+      background-color: rgb(165, 44, 13); */
+}
+
+.btn {
+    background-color: rgb(67, 119, 195)
+ /* background-color: rgb(58, 24, 121);
+    background-color: rgb(134, 141, 36);
+    background-color: rgb(209, 125, 26);
+    background-color: rgb(130, 31, 96);
+    background-color: rgb(165, 44, 13); */
+}
+
+.brand-logo {
+    height: 100%;
+}
+
+.Logo {
+    width: 10%;
+    }
+
+/* css for Login-icon
+.Login {
+    width: 7%;
+}
+*/

@@ -21,34 +21,6 @@
 
 .buttons {
 position: relative;
-width: 50%;
+width: 6%;
 margin-left: 430px;
 }
-
-.buttons .btn {
-position: absolute;
-top: 10%;
-left: 10%;
-transform: translate(-50%, -50%);
--ms-transform: translate(-50%, -50%);
-font-size: 1px;
-padding: 12px 24px;
-cursor: pointer;
-border-radius: 5px;
-max-width: 15%;
-}
-
-/*
-.buttons .share {
-position: absolute;
-top: 10%;
-left: 10%;
-transform: translate(-50%, -50%);
--ms-transform: translate(-50%, -50%);
-font-size: 1px;
-padding: 12px 24px;
-cursor: pointer;
-border-radius: 5px;
-max-width: 15%;
-}
-*/

@@ -30,6 +30,7 @@ import { TextSiteComponent } from './components/text-site/text-site.component';
 import { TestnormanComponent } from './components/testnorman/testnorman.component';
 import { TestlunaComponent } from './components/testluna/testluna.component';
 import { TestmarcelComponent } from './components/testmarcel/testmarcel.component';
+import { SecondgridComponent } from './secondgrid/secondgrid.component';
 
 
 @NgModule({
@@ -50,7 +51,8 @@ import { TestmarcelComponent } from './components/testmarcel/testmarcel.componen
     TextSiteComponent,
     TestnormanComponent,
     TestlunaComponent,
-    TestmarcelComponent
+    TestmarcelComponent,
+    SecondgridComponent
     
   ],
   imports: [
