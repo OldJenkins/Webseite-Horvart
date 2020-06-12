@@ -26,6 +26,7 @@ export class CarouselComponent implements OnInit {
   @Input() images: ImagePost[];
 
   currentSlide = 0;
+  cropperVisible: boolean = false;
 
   ngOnInit(){
     this.picService.getImagePosts().subscribe(pics =>{
@@ -41,5 +42,13 @@ export class CarouselComponent implements OnInit {
   onNextClick() {
     const next = this.currentSlide + 1;
     this.currentSlide = next === this.images.length ? 0 : next;
+  }
+
+  showCropper() {
+    this.cropperVisible = true;
+  }
+
+  hideCropper() {
+    this.cropperVisible = false;
   }
 }

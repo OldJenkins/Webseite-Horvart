@@ -31,6 +31,8 @@ import { TestnormanComponent } from './components/testnorman/testnorman.componen
 import { TestlunaComponent } from './components/testluna/testluna.component';
 import { TestmarcelComponent } from './components/testmarcel/testmarcel.component';
 import { SecondgridComponent } from './secondgrid/secondgrid.component';
+import { StartseiteComponent } from './startseite/startseite.component';
+import { HomeComponent } from './home/home.component';
 
 
 @NgModule({
@@ -52,7 +54,9 @@ import { SecondgridComponent } from './secondgrid/secondgrid.component';
     TestnormanComponent,
     TestlunaComponent,
     TestmarcelComponent,
-    SecondgridComponent
+    SecondgridComponent,
+    StartseiteComponent,
+    HomeComponent
     
   ],
   imports: [

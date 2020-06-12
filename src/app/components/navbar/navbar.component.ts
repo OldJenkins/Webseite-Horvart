@@ -12,4 +12,8 @@ export class NavbarComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  onLoginClicked(){
+    //Admin auf true setzen.
+  }
+
 }
