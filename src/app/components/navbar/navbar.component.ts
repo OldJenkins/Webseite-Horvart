@@ -9,11 +9,19 @@ import { AdminInformationService } from 'src/app/services/admin-information.serv
 export class NavbarComponent implements OnInit {
 
   constructor(private adminService: AdminInformationService) { }
+  isInAdminMode: boolean = false;
 
   ngOnInit(): void {
+    this.adminService.getIsAdminLoggedIn().subscribe(value => {
+      this.isInAdminMode = value;
+    })
+  }
+
+  onLogoutClicked() {
+    this.adminService.setIsAdminLoggedIn(false);
   }
 
   onLoginClicked() {
-    this.adminService.setIsInAdminMode(true);
+    this.adminService.setIsAdminLoggedIn(true);
   }
 }

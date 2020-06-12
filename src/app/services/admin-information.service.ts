@@ -1,25 +1,24 @@
 import { Injectable } from '@angular/core';
+import { Subject, BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AdminInformationService {
 
-  isAdminLoggedIn: boolean = false;
+  isAdminLoggedIn: BehaviorSubject<boolean>;
 
 
-  constructor() { }
-
-  toggleAdminMode() {
-    this.isAdminLoggedIn != this.isAdminLoggedIn;
+  constructor() {
+    this.isAdminLoggedIn = new BehaviorSubject<boolean>(false);
   }
 
-  getIsInAdminMode(): boolean {
+  getIsAdminLoggedIn(): Observable<boolean> {
     return this.isAdminLoggedIn;
   }
 
-  setIsInAdminMode(isInAdminMode): void {
-    this.isAdminLoggedIn = isInAdminMode;
+  setIsAdminLoggedIn(isAdminLoggedIn: boolean) {
+    this.isAdminLoggedIn.next(isAdminLoggedIn);
   }
 
 }
