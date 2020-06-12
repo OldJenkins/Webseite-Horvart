@@ -41,6 +41,7 @@ export class CropperComponent {
  onSaveToCarousel(){
    //Hier kommt der Insert an den Ort, wo die Bilder später liegen sollen
    //Die Variable die du dafür benutzt musst heißt this.croppedImage
+   console.log("Hallo")
  }
 
  resetImage() {

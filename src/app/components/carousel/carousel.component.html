@@ -12,3 +12,9 @@
       <span class="arrow right"></span>
     </button>
   </div>
+
+  <button (click) = "showCropper()">+</button>
+<div *ngIf="cropperVisible">
+  <button (click) = "hideCropper()">-</button>
+  <app-cropper></app-cropper>
+</div>

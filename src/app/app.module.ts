@@ -54,7 +54,6 @@ import { AdminInformationService } from './services/admin-information.service';
     TestlunaComponent,
     TestmarcelComponent,
     SecondgridComponent
-
   ],
   imports: [
     BrowserModule,
