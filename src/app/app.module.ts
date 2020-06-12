@@ -32,6 +32,7 @@ import { TestlunaComponent } from './components/testluna/testluna.component';
 import { TestmarcelComponent } from './components/testmarcel/testmarcel.component';
 import { SecondgridComponent } from './secondgrid/secondgrid.component';
 import { HomeComponent } from './home/home.component';
+import { AdminInformationService } from './services/admin-information.service';
 
 
 @NgModule({
@@ -72,7 +73,7 @@ import { HomeComponent } from './home/home.component';
 
 
   ],
-  providers: [UserService, ImagepostService, VideopostService, TextpostService],
+  providers: [UserService, ImagepostService, VideopostService, TextpostService, AdminInformationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
