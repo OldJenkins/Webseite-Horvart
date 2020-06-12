@@ -26,18 +26,18 @@ export class CarouselImagePostService {
     return this.carouselImagePosts;
   }
 
-  addCarouselImagePost(imagepost: CarouselImagePost) {
-    this.carouselImagePostsCollection.add(imagepost);
+  addCarouselImagePost(carouselImagePost: CarouselImagePost) {
+    this.carouselImagePostsCollection.add(carouselImagePost);
   }
 
-  deleteCarouselImagePost(imagepost: CarouselImagePost) {
-    this.carouselImagePostDoc = this.afs.doc(`imagepost/${imagepost.id}`);
+  deleteCarouselImagePost(carouselImagePost: CarouselImagePost) {
+    this.carouselImagePostDoc = this.afs.doc(`carouselImagePost/${carouselImagePost.id}`);
     this.carouselImagePostDoc.delete();
   }
 
-  updateCarouselImagePost(imagepost: CarouselImagePost) {
-    this.carouselImagePostDoc = this.afs.doc(`imagepost/${imagepost.id}`);
-    this.carouselImagePostDoc.update(imagepost);
+  updateCarouselImagePost(carouselImagePost: CarouselImagePost) {
+    this.carouselImagePostDoc = this.afs.doc(`carouselImagePost/${carouselImagePost.id}`);
+    this.carouselImagePostDoc.update(carouselImagePost);
   }
 }
 
