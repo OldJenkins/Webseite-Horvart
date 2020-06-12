@@ -28,6 +28,6 @@ export class GridComponent implements OnInit {
 
 
   onAddPicToCarouselClicked() {
-
+    //Hier darf Norman noch Kram implementieren :)
   }
 }

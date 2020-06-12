@@ -1,6 +1,5 @@
-export interface ImagePost{
-    id?:string;
-    title?:string;
-    path?:string;
+import { Image } from "./Image";
+
+export interface ImagePost extends Image {
+
 }
-  
