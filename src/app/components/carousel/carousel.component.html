@@ -1,20 +1,22 @@
 <!-- carousel -->
 <div class="carousel">
-    <ng-container *ngFor="let pic of images; let i = index">
-      <img *ngIf="i === currentSlide" [src]="pic.path" class="slide" @carouselAnimation/>
-    </ng-container>
-  
-    <!-- controls -->
-    <button class="control prev" (click)="onPreviousClick()">
-      <span class="arrow left"></span>
-    </button>
-    <button class="control next" (click)="onNextClick()">
-      <span class="arrow right"></span>
-    </button>
-  </div>
+  <ng-container *ngFor="let pic of images; let i = index">
+    <img *ngIf="i === currentSlide" [src]="pic.path" class="slide" @carouselAnimation />
+  </ng-container>
 
-  <button (click) = "showCropper()">+</button>
-<div *ngIf="cropperVisible">
-  <button (click) = "hideCropper()">-</button>
-  <app-cropper></app-cropper>
+  <!-- controls -->
+  <button class="control prev" (click)="onPreviousClick()">
+    <span class="arrow left"></span>
+  </button>
+  <button class="control next" (click)="onNextClick()">
+    <span class="arrow right"></span>
+  </button>
+</div>
+
+<div *ngIf="isAdminLoggedIn">
+  <button (click)="showCropper()">+</button>
+  <div *ngIf="cropperVisible">
+    <button (click)="hideCropper()">-</button>
+    <app-cropper></app-cropper>
+  </div>
 </div>

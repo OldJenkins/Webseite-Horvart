@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { ImagepostService } from 'src/app/services/imagepost.service';
 import { ImagePost } from 'src/app/models/ImagePost';
 import { trigger, transition, style, animate } from "@angular/animations";
+import { AdminInformationService } from 'src/app/services/admin-information.service';
 
 @Component({
   selector: 'app-carousel',
@@ -21,17 +22,21 @@ import { trigger, transition, style, animate } from "@angular/animations";
 })
 export class CarouselComponent implements OnInit {
 
-  constructor(private picService: ImagepostService){ }
+  constructor(private picService: ImagepostService, private adminService: AdminInformationService) { }
 
   @Input() images: ImagePost[];
 
   currentSlide = 0;
   cropperVisible: boolean = false;
+  isAdminLoggedIn: boolean = false;
 
-  ngOnInit(){
-    this.picService.getImagePosts().subscribe(pics =>{
+  ngOnInit() {
+    this.picService.getImagePosts().subscribe(pics => {
       this.images = pics;
     })
+    this.adminService.getIsAdminLoggedIn().subscribe(value => {
+      this.isAdminLoggedIn = value;
+    });
   }
 
   onPreviousClick() {
