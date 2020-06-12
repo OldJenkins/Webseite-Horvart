@@ -12,6 +12,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
   constructor() { }
 
   @ViewChild('parallax') parallax: ElementRef;
+  @ViewChild('parallax2') parallax2: ElementRef;
 
   ngOnInit(): void {
 
@@ -19,6 +20,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit() {
     let instanceParallax = new M.Parallax(this.parallax.nativeElement, {});
+    let instanceParallax2 = new M.Parallax(this.parallax2.nativeElement, {});
   }
 
 
