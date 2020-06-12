@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule} from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CarouselComponent } from './components/carousel/carousel.component';
@@ -12,7 +12,7 @@ import { GridComponent } from './components/./grid/grid.component';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AngularFireModule } from 'angularfire2';
-import { AngularFirestoreModule } from'angularfire2/firestore';
+import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { environment } from '../environments/environment';
 import { UserService } from './services/user.service';
 import { UsersComponent } from './components/users/users.component';
@@ -31,7 +31,6 @@ import { TestnormanComponent } from './components/testnorman/testnorman.componen
 import { TestlunaComponent } from './components/testluna/testluna.component';
 import { TestmarcelComponent } from './components/testmarcel/testmarcel.component';
 import { SecondgridComponent } from './secondgrid/secondgrid.component';
-import { StartseiteComponent } from './startseite/startseite.component';
 import { HomeComponent } from './home/home.component';
 
 
@@ -55,9 +54,8 @@ import { HomeComponent } from './home/home.component';
     TestlunaComponent,
     TestmarcelComponent,
     SecondgridComponent,
-    StartseiteComponent,
     HomeComponent
-    
+
   ],
   imports: [
     BrowserModule,
@@ -71,10 +69,10 @@ import { HomeComponent } from './home/home.component';
     FormsModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule
-    
+
 
   ],
-  providers: [UserService,ImagepostService,VideopostService,TextpostService],
+  providers: [UserService, ImagepostService, VideopostService, TextpostService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

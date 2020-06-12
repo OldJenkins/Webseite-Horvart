@@ -1,0 +1,15 @@
+.card {
+    flex-direction: inherit;
+}
+
+.rund {
+	border-radius: 200px;
+	-moz-border-radius: 200px;
+    -webkit-border-radius: 200px;
+}
+
+.flex { 
+    display: flex; 
+    justify-content: center; 
+    align-items: center;
+}
