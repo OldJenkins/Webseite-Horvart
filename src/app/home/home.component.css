@@ -15,11 +15,14 @@
 }
 
 .parallax-container{
-    position: relative;
-    overflow: hidden;    
     margin-top: 2%;
     margin-bottom: 2%;
     z-index: 1;    
+}
+
+#editParallaxButton{
+font-size: 50px;
+color:#940741;
 }
 
 

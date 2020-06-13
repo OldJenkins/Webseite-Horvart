@@ -2,9 +2,11 @@
 <app-carousel></app-carousel>
 
 <div class="parallax-container">
+    <i class="material-icons" id="editParallaxButton" *ngIf="isAdminLoggedIn"
+        (click)="onEditParallaxPictureClicked(1)">create</i>
     <div class="parallax">
         <div #parallax>
-            <img src="https://images6.alphacoders.com/582/thumb-1920-582236.jpg">
+            <img src="{{images[0].path}}">
         </div>
     </div>
 </div>
@@ -17,9 +19,11 @@
     </div>
 </div>
 <div class="parallax-container">
+    <i *ngIf="isAdminLoggedIn" class="material-icons" id="editParallaxButton"
+        (click)="onEditParallaxPictureClicked(2)">create</i>
     <div class="parallax">
         <div #parallax2>
-            <img src="https://wallpaperaccess.com/full/191688.jpg"></div>
+            <img src="{{images[1].path}}"></div>
     </div>
 </div>
 
