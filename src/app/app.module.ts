@@ -35,6 +35,8 @@ import { SecondgridComponent } from './secondgrid/secondgrid.component';
 import { MatVideoModule } from 'mat-video';
 import { ImageUploadTaskComponent } from './components/image-site/image-upload-task/image-upload-task.component';
 import { VideoUploadTaskComponent } from './components/video-site/video-upload-task/video-upload-task.component';
+import { HomeComponent } from './home/home.component';
+import { AdminInformationService } from './services/admin-information.service';
 
 
 @NgModule({
@@ -58,8 +60,8 @@ import { VideoUploadTaskComponent } from './components/video-site/video-upload-t
     TestmarcelComponent,
     SecondgridComponent,
     ImageUploadTaskComponent,
-    VideoUploadTaskComponent
-
+    VideoUploadTaskComponent,
+    HomeComponent
 
   ],
   imports: [
@@ -76,6 +78,11 @@ import { VideoUploadTaskComponent } from './components/video-site/video-upload-t
     MatVideoModule
   ],
   providers: [UserService, ImagepostService, VideopostService, TextpostService],
+  AngularFirestoreModule
+
+
+  ],
+  providers: [UserService, ImagepostService, VideopostService, TextpostService, AdminInformationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

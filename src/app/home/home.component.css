@@ -1,0 +1,28 @@
+.card {
+    flex-direction: inherit;
+}
+
+.rund {
+	border-radius: 200px;
+	-moz-border-radius: 200px;
+    -webkit-border-radius: 200px;
+}
+
+.flex { 
+    display: flex; 
+    justify-content: center; 
+    align-items: center;
+}
+
+.parallax-container{
+    margin-top: 2%;
+    margin-bottom: 2%;
+    z-index: 1;    
+}
+
+#editParallaxButton{
+font-size: 50px;
+color:#940741;
+}
+
+
