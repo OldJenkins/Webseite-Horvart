@@ -77,11 +77,7 @@ import { AdminInformationService } from './services/admin-information.service';
     AngularFireStorageModule,
     MatVideoModule
   ],
-  providers: [UserService, ImagepostService, VideopostService, TextpostService],
-  AngularFirestoreModule
 
-
-  ],
   providers: [UserService, ImagepostService, VideopostService, TextpostService, AdminInformationService],
   bootstrap: [AppComponent]
 })
