@@ -7,18 +7,42 @@
            <a href="#" class="brand-logo center"><img src="https://image.flaticon.com/icons/png/512/2935/2935025.png" alt="Logo"></a> -->
             <ul id="nav-mobile" class="left hide-on-med-and-down">
                 <li><a routerLink="Home" routerLinkActive="active">Home</a></li>
-                <li><a routerLink="Bilder" routerLinkActive="active">Bilder</a></li>
+                <li><a routerLink="Images" routerLinkActive="active">Bilder</a></li>
                 <li><a routerLink="Videos" routerLinkActive="active">Videos</a></li>
-                <li><a routerLink="Texte" routerLinkActive="active">Texte</a></li>
+                <li><a routerLink="Texts" routerLinkActive="active">Texte</a></li>
             </ul>
 
             <ul id="nav-mobile" class="right hide-on-med-and-down">
 
-                <li><a (click)="onLoginClicked()" routerLink="Login" routerLinkActive="active">Login</a></li>
+
+                <div *ngIf="auth.user$ | async; then authenticated else guest">
+                    <!-- template will replace this div -->
+                </div>
 
 
-                <li><a *ngIf="isInAdminMode == true" (click)="onLogoutClicked()" routerLinkActive="active">LogOut</a>
-                </li>
+
+                <ng-template #guest>
+
+                    <li><a (click)="auth.googleSignin()" routerLink="Login" routerLinkActive="active">Login</a></li>
+
+                </ng-template>
+
+
+                <ng-template #authenticated>
+
+
+                    <div *ngIf="auth.user$ | async as user">
+                        <li><a *ngIf="isInAdminMode == false" (click)="auth.signOut()"
+                                routerLinkActive="active">LogOut</a>
+                        </li>
+                        <img style="width: 46px;height: 46px;" [src]="user.photoURL">
+
+                        <!--<p>{{ user.displayName }}</p>-->
+                    </div>
+
+                </ng-template>
+
+
 
                 <!-- Icon für Login - funktioniert allerdings nicht 
             <li><a routerLink="Login" routerLinkActive="active"><i class="material-icons right"><img src="https://image.flaticon.com/icons/svg/2919/2919600.svg" alt="Login" class="Login"></i></a></li>-->

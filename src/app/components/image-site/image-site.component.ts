@@ -29,8 +29,10 @@ export class ImageSiteComponent implements OnInit {
   }
 
   deleteItem(event, imagepost: ImagePost) {
-    this.closeItem();
-    this.imagepostService.deleteImagepost(imagepost);
+    if (confirm("Are you sure to delete " + imagepost.title + "?")) {
+      this.closeItem();
+      this.imagepostService.deleteImagepost(imagepost);
+    }
   }
 
   editItem(event, textpost: ImagePost) {
