@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../../services/user.service';
-import {User} from '../../models/User';
+import { User } from '../../models/User';
 
 @Component({
   selector: 'app-add-item',
@@ -8,18 +8,18 @@ import {User} from '../../models/User';
   styleUrls: ['./add-item.component.css']
 })
 export class AddItemComponent implements OnInit {
-  user: User ={
-    name: '',
-    mail: ''
+  user: User = {
+    displayName: '',
+    email: ''
   }
 
-  onSubmit(): void{
-    
-    if(this.user.name != '' && this.user.mail != ''){
+  onSubmit(): void {
+
+    if (this.user.displayName != '' && this.user.email != '') {
       this.userService.addUser(this.user);
-      this.user.name = '';
-      this.user.mail = '';
-    }else{
+      this.user.displayName = '';
+      this.user.email = '';
+    } else {
       alert("insert valid input please");
     }
   }

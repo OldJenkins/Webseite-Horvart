@@ -11,8 +11,13 @@ import { CropperComponent } from './components/./cropper/cropper.component';
 import { GridComponent } from './components/./grid/grid.component';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 import { AngularFireModule } from 'angularfire2';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
+import { AngularFireStorageModule } from '@angular/fire/storage';
+import { AngularFireAuthModule } from '@angular/fire/auth';
+
+
 import { environment } from '../environments/environment';
 import { UserService } from './services/user.service';
 import { UsersComponent } from './components/users/users.component';
@@ -31,8 +36,13 @@ import { TestnormanComponent } from './components/testnorman/testnorman.componen
 import { TestlunaComponent } from './components/testluna/testluna.component';
 import { TestmarcelComponent } from './components/testmarcel/testmarcel.component';
 import { SecondgridComponent } from './secondgrid/secondgrid.component';
+import { MatVideoModule } from 'mat-video';
+import { ImageUploadTaskComponent } from './components/image-site/image-upload-task/image-upload-task.component';
+import { VideoUploadTaskComponent } from './components/video-site/video-upload-task/video-upload-task.component';
 import { HomeComponent } from './home/home.component';
 import { AdminInformationService } from './services/admin-information.service';
+import { UserProfileComponent } from './components//user-profile/user-profile.component';
+import { AuthentificationService } from './services/authentification.service';
 
 
 @NgModule({
@@ -55,7 +65,10 @@ import { AdminInformationService } from './services/admin-information.service';
     TestlunaComponent,
     TestmarcelComponent,
     SecondgridComponent,
-    HomeComponent
+    ImageUploadTaskComponent,
+    VideoUploadTaskComponent,
+    HomeComponent,
+    UserProfileComponent
 
   ],
   imports: [
@@ -66,14 +79,15 @@ import { AdminInformationService } from './services/admin-information.service';
     BrowserAnimationsModule,
     FormsModule,
     ImageCropperModule,
-    BrowserAnimationsModule,
-    FormsModule,
     AngularFireModule.initializeApp(environment.firebase),
-    AngularFirestoreModule
-
-
+    AngularFirestoreModule,
+    AngularFireStorageModule,
+    AngularFireAuthModule,
+    AngularFirestoreModule.enablePersistence(),
+    MatVideoModule
   ],
-  providers: [UserService, ImagepostService, VideopostService, TextpostService, AdminInformationService],
+
+  providers: [UserService, ImagepostService, VideopostService, TextpostService, AdminInformationService, AuthentificationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

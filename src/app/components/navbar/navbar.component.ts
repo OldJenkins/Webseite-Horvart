@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AdminInformationService } from 'src/app/services/admin-information.service';
+import { AuthentificationService } from 'src/app/services/authentification.service';
 
 @Component({
   selector: 'app-navbar',
@@ -8,7 +9,7 @@ import { AdminInformationService } from 'src/app/services/admin-information.serv
 })
 export class NavbarComponent implements OnInit {
 
-  constructor(private adminService: AdminInformationService) { }
+  constructor(private adminService: AdminInformationService, public auth: AuthentificationService) { }
   isInAdminMode: boolean = false;
 
   ngOnInit(): void {
