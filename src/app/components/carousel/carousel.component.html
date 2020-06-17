@@ -14,9 +14,12 @@
 </div>
 
 <div *ngIf="isAdminLoggedIn">
-  <button (click)="showCropper()">+</button>
+  <div *ngIf="!cropperVisible">
+    <button id="cropperMenu" (click)="showCropper()">+</button>
+  </div>
+
   <div *ngIf="cropperVisible">
-    <button (click)="hideCropper()">-</button>
+    <button id="cropperMenu" (click)="hideCropper()">-</button>
     <app-cropper></app-cropper>
   </div>
 </div>

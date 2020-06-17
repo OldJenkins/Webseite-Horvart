@@ -1,0 +1,47 @@
+#saveButton {
+    background-color: #E43F5A;    
+}
+
+#cropperSave{
+    display: inherit;
+}
+
+.cropperSaveButtons{
+    text-align: center;
+    background-color: Transparent;
+    border: none;
+    cursor:pointer;
+    color: white;
+    font-size: 1.5rem;    
+    margin-right: 25px;
+    border-radius: 8px;
+    margin-left: 25px;
+    width: 10%;
+    text-align: center;    
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.cropperEditButtons{
+    background-color: Transparent;
+    border: none;
+    cursor:pointer;
+    color: white;
+    font-size: 1rem; 
+    text-align: center; 
+    margin: 10px;
+}
+
+#cropperContainer{
+    text-align: center;
+}
+
+#cropperEdit{
+    display: inline-block;
+}
+
+#fileUpload{
+    margin-top: 4px;
+}
+#label {    
+     margin-bottom: 0rem;
+}

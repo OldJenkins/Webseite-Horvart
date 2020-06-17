@@ -1,22 +1,28 @@
-<div *ngIf="administrator === true">
-    <input type="file" (change)="fileChangeEvent($event)" />
-    <br />
-    <br />
-    <button (click)="rotateLeft()">Rotate left</button>
-    <button (click)="rotateRight()">Rotate right</button>
-    <br />
-    <br />
-    <button (click)="resetImage()">Reset image</button>
-    <br />
-    <br />
-    <input [(ngModel)]="rotation" placeholder="Rotation" type="number" (keyup)="updateRotation()" />
-    <button (click)="zoomOut()">Zoom -</button>
-    <button (click)="zoomIn()">Zoom +</button>
-    <button (click)="onSaveToCarousel()"> In Carousel hinzufügen </button>
+<div id="cropperContainer" *ngIf="administrator === true">
+    <div id="cropperEdit" class="row">
+        <div id="preview" class="row"></div>
+        <div id="editButtons" class="row">
 
-    <image-cropper [imageChangedEvent]="imageChangedEvent" [maintainAspectRatio]="true" [aspectRatio]="4 / 3"
-        format="png" [transform]="transform" (imageCropped)="imageCropped($event)" (imageLoaded)="imageLoaded()"
-        [canvasRotation]="canvasRotation" (cropperReady)="cropperReady()" (loadImageFailed)="loadImageFailed()">
-    </image-cropper>
+            <image-cropper [imageChangedEvent]="imageChangedEvent" [maintainAspectRatio]="true" [aspectRatio]="4 / 3"
+                format="png" [transform]="transform" (imageCropped)="imageCropped($event)" (imageLoaded)="imageLoaded()"
+                [canvasRotation]="canvasRotation" (cropperReady)="cropperReady()" (loadImageFailed)="loadImageFailed()">
+            </image-cropper>
 
+
+            <label id="label" for="file" class="cropperEditButtons">Upload</label>
+            <input id="file" style="display: none;" type="file" (change)="fileChangeEvent($event)" />
+
+
+            <button class="cropperEditButtons" (click)="rotateRight()">Rotate right</button>
+
+            <button class="cropperEditButtons" (click)="zoomOut()">Zoom -</button>
+            <button class="cropperEditButtons" (click)="zoomIn()">Zoom +</button>
+        </div>
+    </div>
+
+    <!-- SAVE / CANCEL-->
+    <div id="cropperSave" class="row">
+        <button class="cropperSaveButtons" id="cancelButton" (click)="resetImage()">CANCEL</button>
+        <button class="cropperSaveButtons" id="saveButton" (click)="onSaveToCarousel()">SAVE</button>
+    </div>
 </div>
