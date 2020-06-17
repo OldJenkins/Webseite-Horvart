@@ -74,3 +74,12 @@
   .arrow.right {
     transform: rotate(225deg);
   }
+
+  #cropperMenu{
+    background-color: Transparent;
+    background-color: #E43F5A;
+    color: white;
+    border-radius: 8px;
+    border: none;
+    cursor:pointer;
+  }

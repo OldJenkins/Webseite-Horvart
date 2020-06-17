@@ -55,10 +55,7 @@ export class CropperComponent implements OnInit {
   }
 
   resetImage() {
-    this.scale = 1;
-    this.rotation = 0;
-    this.canvasRotation = 0;
-    this.transform = {};
+    delete this.imageChangedEvent;
   }
 
   rotateLeft() {
