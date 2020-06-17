@@ -10,7 +10,7 @@ import { AuthentificationService } from 'src/app/services/authentification.servi
 export class NavbarComponent implements OnInit {
 
   constructor(private adminService: AdminInformationService, public auth: AuthentificationService) { }
-  isInAdminMode: boolean = false;
+  isInAdminMode: boolean = true;
 
   ngOnInit(): void {
     this.adminService.getIsAdminLoggedIn().subscribe(value => {

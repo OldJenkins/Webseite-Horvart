@@ -2,7 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { ImagePost } from '../../models/ImagePost';
 import { ImagepostService } from '../../services/imagepost.service';
 import { AdminInformationService } from 'src/app/services/admin-information.service';
-
+import { disableDebugTools } from '@angular/platform-browser';
+import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { DialogComponent } from './dialog/dialog.component';
 
 @Component({
   selector: 'app-grid',
@@ -15,7 +17,10 @@ export class GridComponent implements OnInit {
   isAdminLoggedIn: boolean = false;
 
 
-  constructor(private imagePostService: ImagepostService, private adminService: AdminInformationService) { }
+  constructor(private imagePostService: ImagepostService, private adminService: AdminInformationService, public dialog: MatDialog) {
+
+
+  }
 
   ngOnInit(): void {
     this.imagePostService.getImagePosts().subscribe(response => {
@@ -28,6 +33,16 @@ export class GridComponent implements OnInit {
 
 
   onAddPicToCarouselClicked() {
-    //Hier darf Norman noch Kram implementieren :)
+    this.dialog.open(DialogComponent, {
+      data: { isNew: true }
+    });
   }
+
+
+  onCardClick(post: ImagePost) {
+    this.dialog.open(DialogComponent, {
+      data: { id: post.id, title: post.title, path: post.path }
+    });
+  }
+
 }

@@ -1,0 +1,52 @@
+<div class="hide-on-med-and-up">
+    <img style="max-width: 200px;max-height: 200px;" src="{{post.path}}" />
+</div>
+<div class="hide-on-small-only">
+    <img style="max-width: 450px;max-height: 500px;" src="{{post.path}}" />
+</div>
+
+
+<div class="row">
+    <form class="col s12" (ngSubmit)="save(post);">
+        <div class="row">
+            <div class="input-field col s6">
+
+                <input (change)="setSomeThingChangedToTrue()" [(ngModel)]="post.title" placeholder="{{post.title}}"
+                    id="first_name" type="text" class="validate" value="{{post.title}}" name="title">
+                <label for="first_name">Titel Des Posts</label>
+
+            </div>
+
+        </div>
+        <div class="left-align">
+
+            <h6>Bild ändern</h6>
+            <input name="currentInput" value="Change image" class="file-input" type="file"
+                (change)="startUpload($event);setSomeThingChangedToTrue()">
+
+
+
+            <div [hidden]="pct>99" *ngIf="percentage | async as pct">
+
+                <progress [value]="pct" max="100"></progress>
+
+                <p>{{formatNumber(pct)}}</p>
+
+                <div *ngIf="pct==100">Fertig</div>
+
+            </div>
+        </div>
+
+        <br>
+        <div class="right-align">
+            <div class="left-align">
+                <button class="waves-effect deep-orange accent-3 btn" (click)="delete()">delete post</button>
+            </div>
+            <a style="margin-right: 10px;" (click)="cancel()" class="waves-effect waves-teal btn-flat">Cancel</a>
+            <input class="waves-effect light-green darken-3 btn" type="submit" value="save" />
+
+        </div>
+
+
+    </form>
+</div>
