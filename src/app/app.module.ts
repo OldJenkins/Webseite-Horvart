@@ -11,13 +11,10 @@ import { CropperComponent } from './components/./cropper/cropper.component';
 import { GridComponent } from './components/./grid/grid.component';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
 import { AngularFireModule } from 'angularfire2';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import { AngularFireAuthModule } from '@angular/fire/auth';
-
-
 import { environment } from '../environments/environment';
 import { UserService } from './services/user.service';
 import { UsersComponent } from './components/users/users.component';
@@ -43,6 +40,8 @@ import { HomeComponent } from './home/home.component';
 import { AdminInformationService } from './services/admin-information.service';
 import { UserProfileComponent } from './components//user-profile/user-profile.component';
 import { AuthentificationService } from './services/authentification.service';
+import { DialogComponent } from './components/grid/dialog/dialog.component';
+import { MatDialogModule } from '@angular/material/dialog';
 
 
 @NgModule({
@@ -68,9 +67,12 @@ import { AuthentificationService } from './services/authentification.service';
     ImageUploadTaskComponent,
     VideoUploadTaskComponent,
     HomeComponent,
-    UserProfileComponent
+    UserProfileComponent,
+    DialogComponent
 
   ],
+
+  entryComponents: [DialogComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -84,7 +86,8 @@ import { AuthentificationService } from './services/authentification.service';
     AngularFireStorageModule,
     AngularFireAuthModule,
     AngularFirestoreModule.enablePersistence(),
-    MatVideoModule
+    MatVideoModule,
+    MatDialogModule
   ],
 
   providers: [UserService, ImagepostService, VideopostService, TextpostService, AdminInformationService, AuthentificationService],
