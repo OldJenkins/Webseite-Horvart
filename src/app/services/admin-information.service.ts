@@ -11,7 +11,7 @@ export class AdminInformationService {
 
 
   constructor() {
-    this.isAdminLoggedIn = new BehaviorSubject<boolean>(true);
+    this.isAdminLoggedIn = new BehaviorSubject<boolean>(false);
 
   }
 
