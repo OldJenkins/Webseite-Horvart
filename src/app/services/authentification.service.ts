@@ -8,13 +8,18 @@ import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firest
 
 import { Observable, of, BehaviorSubject } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
+import { AngularFirestoreCollection } from 'angularfire2/firestore';
+import { map } from "rxjs/operators";
+import { AdminInformationService } from './admin-information.service';
 
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthentificationService {
-
+  textpostsCollection: AngularFirestoreCollection<User>;
+  textposts: Observable<User[]>;
+  textpostsDoc: AngularFirestoreDocument<User>;
 
 
   user$: Observable<User>;
@@ -22,7 +27,21 @@ export class AuthentificationService {
 
   constructor(private afAuth: AngularFireAuth,
     private afs: AngularFirestore,
+    private adminInfoService: AdminInformationService,
     private router: Router) {
+
+
+
+    this.textpostsCollection = this.afs.collection('users');
+    this.textposts = this.afs.collection('users').snapshotChanges().pipe(map(changes => {
+      return changes.map(a => {
+        const data = a.payload.doc.data() as User
+        data.uid = a.payload.doc.id;
+        return data;
+      });
+    }));
+
+
 
     this.user$ = this.afAuth.authState.pipe(
       switchMap(user => {
@@ -47,7 +66,6 @@ export class AuthentificationService {
   }
 
   private updateUserData({ uid, email, displayName, photoURL, isAdmin }: User) {
-    // Sets user data to firestore on login
     const userRef: AngularFirestoreDocument<User> = this.afs.doc(`users/${uid}`);
 
     const data = {
@@ -55,11 +73,26 @@ export class AuthentificationService {
       email,
       displayName,
       photoURL,
-      isAdmin
+      isAdmin: false
     }
 
-    return userRef.set(data, { merge: true })
-
+    //Ermitteln der User aus dem Backend und Prüfung, ob der User Admin ist
+    this.textposts.subscribe(response => {
+      let user: any[] = response;
+      user.forEach(element => {
+        if (element.uid == uid) {
+          if (element.isAdmin == true) {
+            data.isAdmin = true;
+            this.adminInfoService.setIsAdminLoggedIn(true); //Observable benachrichtigen: Admin eingeloggt
+            return userRef.set(data, { merge: true })
+          } else {
+            this.adminInfoService.setIsAdminLoggedIn(false);
+            this.adminInfoService.setIsUserLoggedIn(true); //Observable benachrichtigen: User (ohne Admin) eingeloggt
+            return userRef.set(data, { merge: true })
+          }
+        }
+      });
+    })
   }
 
   async signOut() {

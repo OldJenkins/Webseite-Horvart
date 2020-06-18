@@ -16,6 +16,7 @@ export class NavbarComponent implements OnInit {
     this.adminService.getIsAdminLoggedIn().subscribe(value => {
       this.isInAdminMode = value;
     })
+
   }
 
   onLogoutClicked() {
