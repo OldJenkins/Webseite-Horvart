@@ -4,9 +4,15 @@ html, body {
      background-color: #1a1a1d;
 }
 
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 .mat-dialog-container {
     
      background-color:#1a1a1d;
+ }
+body { margin: 0;
+      font-family: Roboto, "Helvetica Neue", sans-serif;
+      font-size: 1rem !important;
+       color: #000000 !important;
+       font-weight: 400 !important;
+       line-height: 1.5 !important;
  }
