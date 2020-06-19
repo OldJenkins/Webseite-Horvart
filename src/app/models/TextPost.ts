@@ -1,6 +1,6 @@
 export interface TextPost {
     id?: string;
     title?: string;
-    content?: string;
+    description?: string;
     timestamp?: number;
 }
