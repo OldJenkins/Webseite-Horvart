@@ -16,22 +16,15 @@ import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { environment } from '../environments/environment';
-import { UserService } from './services/user.service';
-import { UsersComponent } from './components/users/users.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
-import { AddItemComponent } from './components/add-item/add-item.component';
 import { ImagepostService } from './services/imagepost.service';
 import { VideopostService } from './services/videopost.service';
 import { TextpostService } from './services/textpost.service';
 import { MaincontainerComponent } from './components/maincontainer/maincontainer.component';
-import { ContentComponent } from './components/content/content.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { ImageSiteComponent } from './components/image-site/image-site.component';
 import { VideoSiteComponent } from './components/video-site/video-site.component';
 import { TextSiteComponent } from './components/text-site/text-site.component';
-import { TestnormanComponent } from './components/testnorman/testnorman.component';
-import { TestlunaComponent } from './components/testluna/testluna.component';
-import { TestmarcelComponent } from './components/testmarcel/testmarcel.component';
 import { SecondgridComponent } from './components/secondgrid/secondgrid.component';
 import { MatVideoModule } from 'mat-video';
 import { HomeComponent } from './components/home/home.component';
@@ -42,7 +35,7 @@ import { DialogComponent } from './components/grid/dialog/dialog.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { VideoDialogComponent } from './components/video-site/video-dialog/video-dialog.component';
 import { TextDialogComponent } from './components/secondgrid/text-dialog/text-dialog.component';
-import { ImpressumComponent } from './impressum/impressum.component';
+import { ImpressumComponent } from './components/impressum/impressum.component';
 
 
 @NgModule({
@@ -52,18 +45,12 @@ import { ImpressumComponent } from './impressum/impressum.component';
     CardComponent,
     CropperComponent,
     GridComponent,
-    UsersComponent,
     NavbarComponent,
-    AddItemComponent,
     MaincontainerComponent,
-    ContentComponent,
     FooterComponent,
     ImageSiteComponent,
     VideoSiteComponent,
     TextSiteComponent,
-    TestnormanComponent,
-    TestlunaComponent,
-    TestmarcelComponent,
     SecondgridComponent,
     HomeComponent,
     UserProfileComponent,
@@ -92,7 +79,7 @@ import { ImpressumComponent } from './impressum/impressum.component';
     MatDialogModule
   ],
 
-  providers: [UserService, ImagepostService, VideopostService, TextpostService, AdminInformationService, AuthentificationService],
+  providers: [ImagepostService, VideopostService, TextpostService, AdminInformationService, AuthentificationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

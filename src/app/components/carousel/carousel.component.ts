@@ -20,6 +20,9 @@ import { AdminInformationService } from 'src/app/services/admin-information.serv
     ])
   ]
 })
+// Defining The Animations Transaction for the Carousel
+
+
 export class CarouselComponent implements OnInit {
 
   constructor(private picService: ImagepostService, private adminService: AdminInformationService) { }
@@ -32,10 +35,10 @@ export class CarouselComponent implements OnInit {
 
   ngOnInit() {
     this.picService.getImagePosts().subscribe(pics => {
+
+      //Load Images
       this.images = pics;
-      console.log("Bilder geladen");
       console.log(this.images);
-      console.log("Feddisch");
     })
     this.adminService.getIsAdminLoggedIn().subscribe(value => {
       this.isAdminLoggedIn = value;

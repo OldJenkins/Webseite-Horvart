@@ -16,16 +16,23 @@ export class CardComponent implements OnInit {
   isAdminUser: boolean = false;
   isAuthUser: boolean = false;
 
-  constructor(@Inject(MAT_DIALOG_DATA) public data: ImagePost, private imagePostService: ImagepostService, public dialogRef: MatDialogRef<CardComponent>,
+  constructor(@Inject(MAT_DIALOG_DATA) public data: ImagePost,
+    private imagePostService: ImagepostService,
+    public dialogRef: MatDialogRef<CardComponent>,
     private adminInfoService: AdminInformationService) {
+
     this.clickedImage = data;
+
   }
 
   ngOnInit(): void {
+
+    // Get Admin Status from Admin Service
     this.adminInfoService.getIsAdminLoggedIn().subscribe(value => {
       this.isAdminUser = value;
     });
 
+    // Get Login Status
     this.adminInfoService.getIsUserLoggedIn().subscribe(value => {
       this.isAuthUser = value;
     });
