@@ -11,6 +11,8 @@ import { switchMap } from 'rxjs/operators';
 import { AngularFirestoreCollection } from 'angularfire2/firestore';
 import { map } from "rxjs/operators";
 import { AdminInformationService } from './admin-information.service';
+import { exit } from 'process';
+import { element } from 'protractor';
 
 
 @Injectable({
@@ -30,8 +32,6 @@ export class AuthentificationService {
     private adminInfoService: AdminInformationService,
     private router: Router) {
 
-
-
     this.userCollection = this.afs.collection('user');
     this.users = this.afs.collection('user').snapshotChanges().pipe(map(changes => {
       return changes.map(a => {
@@ -40,7 +40,6 @@ export class AuthentificationService {
         return data;
       });
     }));
-
 
 
     this.user$ = this.afAuth.authState.pipe(
@@ -54,7 +53,6 @@ export class AuthentificationService {
         }
       })
     )
-
   }
 
 
@@ -63,14 +61,8 @@ export class AuthentificationService {
     const credential = await this.afAuth.auth.signInWithPopup(provider);
 
     credential.user.email
-
-
     return this.updateUserData(credential.user);
   }
-
-
-
-
 
   private updateUserData({ uid, email, displayName, photoURL, isAdmin }: User) {
     const userRef: AngularFirestoreDocument<User> = this.afs.doc(`user/${uid}`);
@@ -83,29 +75,26 @@ export class AuthentificationService {
       isAdmin: false
     }
 
+
+    let shouldUserBeAdmin = false;
+
     //Ermitteln der User aus dem Backend und Prüfung, ob der User Admin ist
     this.users.subscribe(response => {
       let user: any[] = response;
-      user.forEach(element => {
-        if (element.uid == uid) {
-          if (element.isAdmin == true) {
-            data.isAdmin = true;
-            this.adminInfoService.setIsAdminLoggedIn(true); //Observable benachrichtigen: Admin eingeloggt
-            this.adminInfoService.setIsUserLoggedIn(true);
-            return userRef.set(data, { merge: true })
-          } else {
-            data.isAdmin = false;
-            this.adminInfoService.setIsAdminLoggedIn(false);
-            this.adminInfoService.setIsUserLoggedIn(true); //Observable benachrichtigen: User (ohne Admin) eingeloggt
-            return userRef.set(data, { merge: true })
-          }
-        }
+
+      let foundUser = user.find(element => element.uid == uid);
+
+      if (foundUser == undefined) {
         this.adminInfoService.setIsAdminLoggedIn(false);
-        this.adminInfoService.setIsUserLoggedIn(true); //Observable benachrichtigen: User (ohne Admin) eingeloggt
-        return userRef.set(data, { merge: true })
+        this.adminInfoService.setIsUserLoggedIn(true);
+      } else if (foundUser.isAdmin == true) {
+        shouldUserBeAdmin = true;
+        this.adminInfoService.setIsAdminLoggedIn(true);
+        this.adminInfoService.setIsUserLoggedIn(true);
+      }
+      data.isAdmin = shouldUserBeAdmin;
 
-      });
-
+      return userRef.set(data, { merge: true })
     })
   }
 
