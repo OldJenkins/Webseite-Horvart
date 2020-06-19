@@ -67,7 +67,7 @@ export class TextDialogComponent implements OnInit {
         console.log("something has changed");
         post.timestamp = Date.now();
         this.textpostService.addTextPost(post);
-        console.log("added image");
+        console.log("added Post");
       }
     }
     this.dialogRef.close();
