@@ -98,12 +98,19 @@ export class AuthentificationService {
             return userRef.set(data, { merge: true })
           }
         }
+        this.adminInfoService.setIsAdminLoggedIn(false);
+        this.adminInfoService.setIsUserLoggedIn(true); //Observable benachrichtigen: User (ohne Admin) eingeloggt
+        return userRef.set(data, { merge: true })
+
       });
+
     })
   }
 
   async signOut() {
     await this.afAuth.auth.signOut();
+    this.adminInfoService.setIsAdminLoggedIn(false);
+    this.adminInfoService.setIsUserLoggedIn(false);
     this.router.navigate(['/']);
   }
 }
