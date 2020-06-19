@@ -42,6 +42,7 @@ import { DialogComponent } from './components/grid/dialog/dialog.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { VideoDialogComponent } from './components/video-site/video-dialog/video-dialog.component';
 import { TextDialogComponent } from './components/secondgrid/text-dialog/text-dialog.component';
+import { ImpressumComponent } from './impressum/impressum.component';
 
 
 @NgModule({
@@ -68,7 +69,8 @@ import { TextDialogComponent } from './components/secondgrid/text-dialog/text-di
     UserProfileComponent,
     DialogComponent,
     VideoDialogComponent,
-    TextDialogComponent
+    TextDialogComponent,
+    ImpressumComponent
 
   ],
 

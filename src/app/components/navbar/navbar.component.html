@@ -1,55 +1,66 @@
-<ul id="slide-out" class="sidenav">
-    <li>
-        <a routerLink="Home" routerLinkActive="active">Home</a>
-        <a routerLink="Images" routerLinkActive="active">Bilder</a>
-        <a routerLink="Videos" routerLinkActive="active">Videos</a>
-        <a routerLink="Texts" routerLinkActive="active">Texte</a>
-    </li>
-
-</ul>
-<a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-
-
-<div class="navbar-fixed">
+<div class="hide-on-large-only">
     <nav>
-        <div class="nav-wrapper">
-            <a href="#" class="brand-logo center"><img src="https://image.flaticon.com/icons/svg/2934/2934660.svg"
-                    alt="Logo" class="Logo"></a>
-            <!-- blaues Logo
-           <a href="#" class="brand-logo center"><img src="https://image.flaticon.com/icons/png/512/2935/2935025.png" alt="Logo"></a> -->
-            <ul id="nav-mobile" class="left hide-on-med-and-down">
-                <li><a routerLink="Home" routerLinkActive="active">Home</a></li>
-                <li><a routerLink="Images" routerLinkActive="active">Bilder</a></li>
-                <li><a routerLink="Videos" routerLinkActive="active">Videos</a></li>
-                <li><a routerLink="Texts" routerLinkActive="active">Texte</a></li>
-            </ul>
+        <a routerLink="Home" routerLinkActive="active">"><img
+                src="https://image.flaticon.com/icons/svg/2934/2934660.svg" alt="Logo" class="Logo"></a>
+        <!-- <a href="#" class="brand-logo center"><img src="https://image.flaticon.com/icons/svg/2934/2934660.svg"
+                alt="Logo" class="Logo"></a>-->
+        <ul id="slide-out" class="sidenav">
+            <li>
+                <a routerLink="Home" routerLinkActive="active">Home</a>
+                <a routerLink="Images" routerLinkActive="active">Bilder</a>
+                <a routerLink="Videos" routerLinkActive="active">Videos</a>
+                <a routerLink="Texts" routerLinkActive="active">Texte</a>
+            </li>
 
-            <ul id="nav-mobile" class="right hide-on-med-and-down">
-
-
-                <div *ngIf="auth.user$ | async; then authenticated else guest">
-                    <!-- template will replace this div -->
-                </div>
-
-
-                <ng-template #guest>
-                    <li><a (click)="auth.googleSignin()">Login</a></li>
-                </ng-template>
-
-
-                <ng-template #authenticated>
-                    <div *ngIf="auth.user$ | async as user">
-                        <img style="width: 46px;height: 46px;margin-right: 10px;border-radius: 50%;"
-                            [src]="user.photoURL">
-                        <li><a (click)="auth.signOut()" routerLinkActive="active">LogOut</a>
-                        </li>
-
-
-                        <!--<p>{{ user.displayName }}</p>-->
-                    </div>
-                </ng-template>
-
-            </ul>
-        </div>
+        </ul>
+        <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></a>
     </nav>
+</div>
+
+
+
+<div class="hide-on-small-only">
+    <div class="navbar-fixed">
+        <nav>
+            <div class="nav-wrapper">
+                <a href="#" class="brand-logo center"><img src="https://image.flaticon.com/icons/svg/2934/2934660.svg"
+                        alt="Logo" class="Logo"></a>
+                <!-- blaues Logo
+           <a href="#" class="brand-logo center"><img src="https://image.flaticon.com/icons/png/512/2935/2935025.png" alt="Logo"></a> -->
+                <ul id="nav-mobile" class="left hide-on-med-and-down">
+                    <li><a routerLink="Home" routerLinkActive="active">Home</a></li>
+                    <li><a routerLink="Images" routerLinkActive="active">Bilder</a></li>
+                    <li><a routerLink="Videos" routerLinkActive="active">Videos</a></li>
+                    <li><a routerLink="Texts" routerLinkActive="active">Texte</a></li>
+                </ul>
+
+                <ul id="nav-mobile" class="right hide-on-med-and-down">
+
+
+                    <div *ngIf="auth.user$ | async; then authenticated else guest">
+                        <!-- template will replace this div -->
+                    </div>
+
+
+                    <ng-template #guest>
+                        <li><a (click)="auth.googleSignin()">Login</a></li>
+                    </ng-template>
+
+
+                    <ng-template #authenticated>
+                        <div *ngIf="auth.user$ | async as user">
+                            <img style="width: 46px;height: 46px;margin-right: 10px;border-radius: 50%;"
+                                [src]="user.photoURL">
+                            <li><a (click)="auth.signOut()" routerLinkActive="active">LogOut</a>
+                            </li>
+
+
+                            <!--<p>{{ user.displayName }}</p>-->
+                        </div>
+                    </ng-template>
+
+                </ul>
+            </div>
+        </nav>
+    </div>
 </div>

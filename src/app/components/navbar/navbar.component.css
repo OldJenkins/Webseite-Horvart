@@ -1,3 +1,14 @@
+nav{
+    background-color: #2d3436 !important;
+}
+
+nav a {
+    color: #4db6ac;
+}
+
+.sidenav{
+    background-color: #1a1a1d;
+}
 
 .btn green{
 margin-left:10px;
@@ -10,7 +21,7 @@ a:hover{
 }
 
 .nav-wrapper {
-    background-color: rgb(45, 52, 54); 
+    background-color: #2d3436; 
   /*  background-color: rgb(70, 124, 198);
       background-color: rgb(58, 24, 121);
       background-color: rgb(134, 141, 36);
