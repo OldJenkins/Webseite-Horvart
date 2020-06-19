@@ -5,6 +5,11 @@
 }
 */
 
+.carousel{
+    height: 50%;
+}
+
+
 .card-action{
     flex-direction: inherit;
     background-color: #636e72;
