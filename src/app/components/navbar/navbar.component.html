@@ -1,7 +1,11 @@
-<div class="hide-on-large-only">
-    <nav>
-        <a routerLink="Home" routerLinkActive="active">"><img
-                src="https://image.flaticon.com/icons/svg/2934/2934660.svg" alt="Logo" class="Logo"></a>
+<nav>
+
+
+    <div class="show-on-medium-and-down">
+
+        <a routerLink="Home" routerLinkActive="active" src="https://image.flaticon.com/icons/svg/2934/2934660.svg"
+            alt="Logo" class="Logo "></a>
+
         <!-- <a href="#" class="brand-logo center"><img src="https://image.flaticon.com/icons/svg/2934/2934660.svg"
                 alt="Logo" class="Logo"></a>-->
         <ul id="slide-out" class="sidenav">
@@ -14,27 +18,29 @@
 
         </ul>
         <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-    </nav>
-</div>
+
+    </div>
 
 
+    <a routerLink="Home" routerLinkActive="active" src="https://image.flaticon.com/icons/svg/2934/2934660.svg"
+        alt="Logo" class="Logo "></a>
+    <div class="hide-on-med-and-down">
+        <div class="navbar-fixed">
 
-<div class="hide-on-small-only">
-    <div class="navbar-fixed">
-        <nav>
             <div class="nav-wrapper">
-                <a href="#" class="brand-logo center"><img src="https://image.flaticon.com/icons/svg/2934/2934660.svg"
-                        alt="Logo" class="Logo"></a>
+
+
+
                 <!-- blaues Logo
            <a href="#" class="brand-logo center"><img src="https://image.flaticon.com/icons/png/512/2935/2935025.png" alt="Logo"></a> -->
-                <ul id="nav-mobile" class="left hide-on-med-and-down">
+                <ul id="nav-mobile" class="left">
                     <li><a routerLink="Home" routerLinkActive="active">Home</a></li>
                     <li><a routerLink="Images" routerLinkActive="active">Bilder</a></li>
                     <li><a routerLink="Videos" routerLinkActive="active">Videos</a></li>
                     <li><a routerLink="Texts" routerLinkActive="active">Texte</a></li>
                 </ul>
 
-                <ul id="nav-mobile" class="right hide-on-med-and-down">
+                <ul id="nav-mobile" class="right">
 
 
                     <div *ngIf="auth.user$ | async; then authenticated else guest">
@@ -61,6 +67,8 @@
 
                 </ul>
             </div>
-        </nav>
+
+        </div>
     </div>
-</div>
+
+</nav>
