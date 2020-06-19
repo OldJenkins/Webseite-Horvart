@@ -1,6 +1,10 @@
 mat-grid-tile {
-    background: #4db6ac;
+    background: rgb(0, 0, 0);
   }
+
+.add_btn{
+color: whitesmoke;
+}
 
   #addPicToGrid{
     color: aliceblue;

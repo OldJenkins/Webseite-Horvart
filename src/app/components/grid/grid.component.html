@@ -1,13 +1,10 @@
-<h1>Bilder</h1>
-<br />
-
-
 <mat-grid-list role="list" cols="3" rowHeight="2:1">
 
   <div *ngFor='let image of imagePost; let i = index'>
     <div *ngIf="i == 0 && isAdminLoggedIn">
-      <mat-grid-tile (click)="onAddPicToCarouselClicked()">
-        <h5>Add Post</h5><br />
+      <mat-grid-tile>
+        <a (click)="onAddPicToCarouselClicked()" class="btn-floating btn-large waves-effect ">
+          <i class="material-icons">add</i></a>
         <!--<i id="addPicToCarousel" class="material-icons">add</i>-->
       </mat-grid-tile>
     </div>
@@ -22,4 +19,3 @@
 
   </div>
 </mat-grid-list>
-<br />

@@ -3,8 +3,9 @@
         <div id="preview" class="row"></div>
         <div id="editButtons" class="row">
 
-            <image-cropper [imageChangedEvent]="imageChangedEvent" [maintainAspectRatio]="true" [aspectRatio]="4 / 3"
-                format="png" [transform]="transform" (imageCropped)="imageCropped($event)" (imageLoaded)="imageLoaded()"
+            <image-cropper style="max-height: 800px;max-width: 600px;" [imageChangedEvent]="imageChangedEvent"
+                [imageURL]="post.path" [maintainAspectRatio]="true" [aspectRatio]="4 / 3" format="jpeg"
+                [transform]="transform" (imageCropped)="imageCropped($event)" (imageLoaded)="imageLoaded()"
                 [canvasRotation]="canvasRotation" (cropperReady)="cropperReady()" (loadImageFailed)="loadImageFailed()">
             </image-cropper>
 

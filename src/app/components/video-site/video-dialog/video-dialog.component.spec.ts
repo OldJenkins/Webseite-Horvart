@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { UploadTaskComponent } from './video-upload-task.component';
+import { VideoDialogComponent } from './video-dialog.component';
 
-describe('UploadTaskComponent', () => {
-  let component: UploadTaskComponent;
-  let fixture: ComponentFixture<UploadTaskComponent>;
+describe('VideoDialogComponent', () => {
+  let component: VideoDialogComponent;
+  let fixture: ComponentFixture<VideoDialogComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [UploadTaskComponent]
+      declarations: [ VideoDialogComponent ]
     })
-      .compileComponents();
+    .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(UploadTaskComponent);
+    fixture = TestBed.createComponent(VideoDialogComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

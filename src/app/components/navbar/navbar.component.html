@@ -20,26 +20,21 @@
                 </div>
 
 
-
                 <ng-template #guest>
-
-                    <li><a (click)="auth.googleSignin()" routerLink="Login" routerLinkActive="active">Login</a></li>
-
+                    <li><a (click)="auth.googleSignin()">Login</a></li>
                 </ng-template>
 
 
                 <ng-template #authenticated>
-
-
                     <div *ngIf="auth.user$ | async as user">
-                        <li><a *ngIf="isInAdminMode == false" (click)="auth.signOut()"
-                                routerLinkActive="active">LogOut</a>
+                        <img style="width: 46px;height: 46px;margin-right: 10px;border-radius: 50%;"
+                            [src]="user.photoURL">
+                        <li><a (click)="auth.signOut()" routerLinkActive="active">LogOut</a>
                         </li>
-                        <img style="width: 46px;height: 46px;" [src]="user.photoURL">
+
 
                         <!--<p>{{ user.displayName }}</p>-->
                     </div>
-
                 </ng-template>
 
             </ul>

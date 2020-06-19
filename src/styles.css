@@ -4,6 +4,11 @@ html, body {
      background-color: #1a1a1d;
 }
 
+
+.mat-dialog-container {
+    
+     background-color:#1a1a1d;
+ }
 body { margin: 0;
       font-family: Roboto, "Helvetica Neue", sans-serif;
       font-size: 1rem !important;
@@ -20,3 +25,4 @@ body { margin: 0;
       padding: 24px;
       background-color: #2d3436;
   }
+ 

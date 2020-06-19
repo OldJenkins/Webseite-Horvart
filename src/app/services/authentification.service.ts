@@ -17,9 +17,9 @@ import { AdminInformationService } from './admin-information.service';
   providedIn: 'root'
 })
 export class AuthentificationService {
-  textpostsCollection: AngularFirestoreCollection<User>;
-  textposts: Observable<User[]>;
-  textpostsDoc: AngularFirestoreDocument<User>;
+  userCollection: AngularFirestoreCollection<User>;
+  users: Observable<User[]>;
+  userDoc: AngularFirestoreDocument<User>;
 
 
   user$: Observable<User>;
@@ -32,8 +32,8 @@ export class AuthentificationService {
 
 
 
-    this.textpostsCollection = this.afs.collection('users');
-    this.textposts = this.afs.collection('users').snapshotChanges().pipe(map(changes => {
+    this.userCollection = this.afs.collection('users');
+    this.users = this.afs.collection('users').snapshotChanges().pipe(map(changes => {
       return changes.map(a => {
         const data = a.payload.doc.data() as User
         data.uid = a.payload.doc.id;
@@ -55,15 +55,22 @@ export class AuthentificationService {
       })
     )
 
-
   }
 
 
   async googleSignin() {
     const provider = new auth.GoogleAuthProvider();
     const credential = await this.afAuth.auth.signInWithPopup(provider);
+
+    credential.user.email
+
+
     return this.updateUserData(credential.user);
   }
+
+
+
+
 
   private updateUserData({ uid, email, displayName, photoURL, isAdmin }: User) {
     const userRef: AngularFirestoreDocument<User> = this.afs.doc(`users/${uid}`);
@@ -77,7 +84,7 @@ export class AuthentificationService {
     }
 
     //Ermitteln der User aus dem Backend und Prüfung, ob der User Admin ist
-    this.textposts.subscribe(response => {
+    this.users.subscribe(response => {
       let user: any[] = response;
       user.forEach(element => {
         if (element.uid == uid) {
@@ -93,17 +100,19 @@ export class AuthentificationService {
             return userRef.set(data, { merge: true })
           }
         }
-        //Neue User werden in der Datenbank angelegt
-        data.isAdmin = false;
         this.adminInfoService.setIsAdminLoggedIn(false);
         this.adminInfoService.setIsUserLoggedIn(true); //Observable benachrichtigen: User (ohne Admin) eingeloggt
         return userRef.set(data, { merge: true })
+
       });
+
     })
   }
 
   async signOut() {
     await this.afAuth.auth.signOut();
+    this.adminInfoService.setIsAdminLoggedIn(false);
+    this.adminInfoService.setIsUserLoggedIn(false);
     this.router.navigate(['/']);
   }
 }

@@ -15,7 +15,7 @@ import { CardComponent } from '../card/card.component';
 export class GridComponent implements OnInit {
 
   imagePost: ImagePost[];
-  isAdminLoggedIn: boolean = false;
+  isAdminLoggedIn: boolean;
 
 
   constructor(private imagePostService: ImagepostService, private adminService: AdminInformationService, public dialog: MatDialog, public cardDialog: MatDialog) {
