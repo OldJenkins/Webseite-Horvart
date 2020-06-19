@@ -4,6 +4,11 @@ html, body {
      background-color: #1a1a1d;
 }
 
+
+.mat-dialog-container {
+    
+     background-color:#1a1a1d;
+ }
 body { margin: 0;
       font-family: Roboto, "Helvetica Neue", sans-serif;
       font-size: 1rem !important;
@@ -11,3 +16,12 @@ body { margin: 0;
        font-weight: 400 !important;
        line-height: 1.5 !important;
  }
+
+ h1 {
+       color: #4db6ac !important;
+ }
+
+ .mat-dialog-container {
+      padding: 24px;
+      background-color: #2d3436;
+  }

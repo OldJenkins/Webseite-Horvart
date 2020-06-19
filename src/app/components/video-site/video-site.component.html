@@ -1,25 +1,37 @@
 <div class="container">
-  <!-- Page Content goes here -->
 
 
+  <!-- Add Button for the Admin mode -->
+  <div style="margin: 30px;" *ngIf="isAdmin">
+    <div class="center-align">
+      <a (click)="openDialogNewItem()" class="btn-floating btn-large waves-effect "><i
+          class="material-icons">add</i></a>
+    </div>
+  </div>
+
+  <!-- Show all existing Videos -->
   <div *ngIf="videoPosts?.length > 0;else noVideos">
     <div class="row" *ngFor="let videopost of videoPosts">
 
-      <div class="card">
+      <div class="card grey darken-3">
         <div class="card-image">
-          <!--<mat-video title="hallo" [preload]="true" src="{{videopost.path}}" ></mat-video>-->
+
           <video class="responsive-video" controls>
             <source src="{{videopost.path}}" type="video/mp4">
           </video>
 
-          <!--<span class="card-title">{{videopost.title}}</span>-->
+
         </div>
         <div class="card-content">
-          <p>I am a very simple card. I am good at containing small bits of information.
-            I am convenient because I require little markup to use effectively.</p>
+          <span style="color:aliceblue" class="card-title">{{videopost.title}}</span>
+          <p style="color:aliceblue" class="card-content">{{videopost.description}}</p>
         </div>
-        <div class="card-action">
-          <a href="#">This is a link</a>
+
+        <!-- Show only when Admin is enabled WARNING CURRENTLY NEVER TRUE-->
+        <div *ngIf="isAdmin" class="card-action">
+          <a (click)="openDialogChangeItem(videopost)" class="waves-effect waves-light btn"><i
+              class="material-icons left">edit</i>Bearbeiten</a>
+
         </div>
       </div>
 
@@ -32,6 +44,3 @@
   </ng-template>
 
 </div>
-
-
-<video-upload-task></video-upload-task>

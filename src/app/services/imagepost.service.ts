@@ -9,18 +9,15 @@ export class ImagepostService {
   imagepostsCollection: AngularFirestoreCollection<ImagePost>;
   imageposts: Observable<ImagePost[]>;
   imagepostsDoc: AngularFirestoreDocument<ImagePost>;
+  testposts: Observable<ImagePost[]>;
+
+  item: Observable<any>;
 
   constructor(public afs: AngularFirestore) {
 
-    this.imageposts = this.afs.collection('imagepost').snapshotChanges().pipe(map(changes => {
-      return changes.map(a => {
-        const data = a.payload.doc.data() as ImagePost
-        data.id = a.payload.doc.id;
-        return data;
-      });
-    }));
 
     //this.usersCollection = this.afs.collection('User');
+
     this.imagepostsCollection = this.afs.collection('imagepost');
     this.imageposts = this.afs.collection('imagepost').snapshotChanges().pipe(map(changes => {
       return changes.map(a => {
@@ -29,7 +26,9 @@ export class ImagepostService {
         return data;
       });
     }));
+
   }
+
 
   getImagePosts() {
     return this.imageposts;
@@ -49,4 +48,7 @@ export class ImagepostService {
     this.imagepostsDoc.update(imagepost);
   }
 
+
+
 }
+

@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
+import { ImagePost } from '../../models/ImagePost';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { ImagepostService } from '../../services/imagepost.service';
 
 @Component({
   selector: 'app-card',
@@ -7,24 +10,29 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CardComponent implements OnInit {
 
-  constructor() { }
-  isAdmin = false;
 
-  ngOnInit(){
-    if(this.isAdmin){
-      this.showThis();
-    }else{
-      this.dontShowThis();
-    }
+  clickedImage: ImagePost;
+  isAdminUser: boolean = false;
+  isAuthUser: boolean = false;
+
+  constructor(@Inject(MAT_DIALOG_DATA) public data: ImagePost, private imagePostService: ImagepostService, public dialogRef: MatDialogRef<CardComponent>) {
+    this.clickedImage = data;
   }
 
-  showThis(){
+  ngOnInit(): void {
 
+
+
+    /*
+    this.imagePostService.getImagePosts().subscribe(response => {
+      //this.imagePost = response;
+
+      let image: ImagePost[];
+      image = response;
+
+
+
+    });
+    */
   }
-
-  dontShowThis(){
-
-  }
-
-
 }

@@ -55,15 +55,22 @@ export class AuthentificationService {
       })
     )
 
-
   }
 
 
   async googleSignin() {
     const provider = new auth.GoogleAuthProvider();
     const credential = await this.afAuth.auth.signInWithPopup(provider);
+
+    credential.user.email
+
+
     return this.updateUserData(credential.user);
   }
+
+
+
+
 
   private updateUserData({ uid, email, displayName, photoURL, isAdmin }: User) {
     const userRef: AngularFirestoreDocument<User> = this.afs.doc(`users/${uid}`);
