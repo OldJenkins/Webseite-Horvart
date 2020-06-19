@@ -1,3 +1,7 @@
+<h1>Bilder</h1>
+<br />
+
+
 <mat-grid-list role="list" cols="3" rowHeight="2:1">
 
   <div *ngFor='let image of imagePost; let i = index'>
@@ -8,10 +12,15 @@
         <!--<i id="addPicToCarousel" class="material-icons">add</i>-->
       </mat-grid-tile>
     </div>
-    <mat-grid-tile (click)="onCardClick(image)" role="listitem">
 
+
+
+    <mat-grid-tile (click)="onCardClick(image)" role="listitem">
       <img src={{image.path}}>
-      <h1>Hallo ?</h1>
     </mat-grid-tile>
+
+
+
   </div>
 </mat-grid-list>
+<br />
