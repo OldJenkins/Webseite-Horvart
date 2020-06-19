@@ -22,9 +22,7 @@ import { VideopostService } from './services/videopost.service';
 import { TextpostService } from './services/textpost.service';
 import { MaincontainerComponent } from './components/maincontainer/maincontainer.component';
 import { FooterComponent } from './components/footer/footer.component';
-import { ImageSiteComponent } from './components/image-site/image-site.component';
 import { VideoSiteComponent } from './components/video-site/video-site.component';
-import { TextSiteComponent } from './components/text-site/text-site.component';
 import { SecondgridComponent } from './components/secondgrid/secondgrid.component';
 import { MatVideoModule } from 'mat-video';
 import { HomeComponent } from './components/home/home.component';
@@ -48,9 +46,7 @@ import { ImpressumComponent } from './components/impressum/impressum.component';
     NavbarComponent,
     MaincontainerComponent,
     FooterComponent,
-    ImageSiteComponent,
     VideoSiteComponent,
-    TextSiteComponent,
     SecondgridComponent,
     HomeComponent,
     UserProfileComponent,
@@ -58,7 +54,6 @@ import { ImpressumComponent } from './components/impressum/impressum.component';
     VideoDialogComponent,
     TextDialogComponent,
     ImpressumComponent
-
   ],
 
   entryComponents: [DialogComponent],

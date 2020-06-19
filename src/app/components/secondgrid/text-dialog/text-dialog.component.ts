@@ -5,13 +5,12 @@ import { TextpostService } from 'src/app/services/textpost.service';
 import { AdminInformationService } from '../../../services/admin-information.service';
 
 
-
-
 @Component({
   selector: 'app-text-dialog',
   templateUrl: './text-dialog.component.html',
   styleUrls: ['./text-dialog.component.css']
 })
+
 export class TextDialogComponent implements OnInit {
 
   post: TextPost;
@@ -28,6 +27,7 @@ export class TextDialogComponent implements OnInit {
     public textpostService: TextpostService,
     private adminService: AdminInformationService) {
 
+    // Check if you are creating a new post
     if (!data.id) {
       this.isNew = true;
       console.log("nichts da & es ist neu");
@@ -36,14 +36,11 @@ export class TextDialogComponent implements OnInit {
       console.log("post" + this.post.title);
     }
 
-
-
-    // Check if you are creating a new post
-
   }
 
   ngOnInit(): void {
 
+    // Get Current Admin State
     this.adminService.getIsAdminLoggedIn().subscribe(value => {
       this.isAdmin = value;
     });
@@ -56,24 +53,25 @@ export class TextDialogComponent implements OnInit {
 
   setSomeThingChangedToTrue() {
     this.someThingChanged = true;
-    console.log("something has changed")
+    //something has changed
   }
 
   save(post: TextPost) {
 
     if (!this.isNew) {
-      console.log("trying to save");
+
       //Only make you update query if something really has changes, to minimize server usage
       if (this.someThingChanged) {
-        console.log("something has changed");
+        //something has changed
         this.textpostService.updateTextpost(post);
-        console.log("updated text");
+
       }
     } else {
       console.log("trying to save");
       //Only make you update query if something really has changes, to minimize server usage
       if (this.someThingChanged) {
-        console.log("something has changed");
+
+        //something has changed
         post.timestamp = Date.now();
         this.textpostService.addTextPost(post);
         console.log("added Post");

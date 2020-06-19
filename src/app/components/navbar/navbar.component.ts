@@ -8,6 +8,8 @@ import * as M from 'materialize-css/dist/js/materialize'
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.css']
 })
+
+
 export class NavbarComponent implements OnInit, AfterViewInit {
 
   constructor(private adminService: AdminInformationService, public auth: AuthentificationService) { }
@@ -18,11 +20,9 @@ export class NavbarComponent implements OnInit, AfterViewInit {
     this.adminService.getIsAdminLoggedIn().subscribe(value => {
       this.isInAdminMode = value;
     })
-
-
-
   }
 
+  // Used for the Burger Menu
   ngAfterViewInit() {
     setTimeout(function () {
       var elem = document.querySelector('.sidenav');

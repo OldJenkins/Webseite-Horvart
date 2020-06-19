@@ -1,6 +1,6 @@
 <nav>
 
-
+    <!-- Navbar for Mobile Devices-->
     <div class="show-on-medium-and-down">
         <a href="Home" class="brand-logo center"><img src="https://image.flaticon.com/icons/svg/2934/2934660.svg"
                 alt="Logo" class="Logo"></a>
@@ -16,14 +16,14 @@
         <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></a>
     </div>
 
-
+    <!-- Navbar for Desktop-->
     <div class="hide-on-med-and-down">
         <div class="navbar-fixed">
             <div class="nav-wrapper">
+
                 <a href="Home" class="brand-logo center"><img
                         src="https://image.flaticon.com/icons/svg/2934/2934660.svg" alt="Logo" class="Logo"></a>
-                <!-- blaues Logo
-           <a href="#" class="brand-logo center"><img src="https://image.flaticon.com/icons/png/512/2935/2935025.png" alt="Logo"></a> -->
+
                 <ul id="nav-mobile" class="left">
                     <li><a routerLink="./Home" routerLinkActive="active">Home</a></li>
                     <li><a routerLink="Images" routerLinkActive="active">Bilder</a></li>
@@ -32,37 +32,28 @@
                 </ul>
 
                 <ul id="nav-mobile" class="right">
-
-
-
                     <div *ngIf="auth.user$ | async; then authenticated else guest">
                         <!-- template will replace this div -->
                     </div>
 
-
+                    <!-- Show Login Button -->
                     <ng-template #guest>
                         <li><a (click)="auth.googleSignin()">Login</a></li>
                     </ng-template>
 
-
+                    <!-- Show when User is Authentificated-->
                     <ng-template #authenticated>
                         <div *ngIf="auth.user$ | async as user">
                             <img style="width: 46px;height: 46px;margin-right: 10px;border-radius: 50%;"
                                 [src]="user.photoURL">
                             <li><a (click)="auth.signOut()" routerLinkActive="active">LogOut</a>
                             </li>
-
-
-                            <!--<p>{{ user.displayName }}</p>-->
                         </div>
                     </ng-template>
-
-
 
                 </ul>
             </div>
 
         </div>
     </div>
-
 </nav>

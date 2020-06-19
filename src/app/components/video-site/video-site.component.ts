@@ -12,7 +12,6 @@ import { AdminInformationService } from '../../services/admin-information.servic
 })
 export class VideoSiteComponent implements OnInit {
 
-  //isAdmin: boolean = true;
 
   videoPosts: VideoPost[];
   editState: boolean = false;
@@ -20,15 +19,20 @@ export class VideoSiteComponent implements OnInit {
 
   isAdmin: boolean;
 
-  constructor(private videoPostService: VideopostService, public dialog: MatDialog, private adminService: AdminInformationService,) {
+  constructor(private videoPostService: VideopostService,
+    public dialog: MatDialog,
+    private adminService: AdminInformationService,) {
 
   }
 
   ngOnInit(): void {
+
+    // Get VideoPosts
     this.videoPostService.getVideoPosts().subscribe(response => {
       this.videoPosts = response;
     });
 
+    // Get Current Admin State
     this.adminService.getIsAdminLoggedIn().subscribe(value => {
       this.isAdmin = value;
     })
@@ -53,14 +57,17 @@ export class VideoSiteComponent implements OnInit {
     this.editState = false;
   }
 
-
   openDialogChangeItem(post: VideoPost) {
+
+    // Open Dialog an pass current Data
     this.dialog.open(VideoDialogComponent, {
       data: { id: post.id, title: post.title, path: post.path }
     });
   }
 
   openDialogNewItem() {
+
+    // Open the Dialog and pass no Data because we are creating a new one
     this.dialog.open(VideoDialogComponent, {
       data: {}
     });

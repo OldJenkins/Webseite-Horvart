@@ -1,7 +1,5 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { TextSiteComponent } from './components/text-site/text-site.component';
-import { ImageSiteComponent } from './components/image-site/image-site.component';
 import { VideoSiteComponent } from './components/video-site/video-site.component';
 import { CarouselComponent } from './components/carousel/carousel.component';
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
@@ -19,7 +17,6 @@ const routes: Routes = [
   { path: 'Login', component: UserProfileComponent },
   { path: 'Home', component: HomeComponent },
   { path: 'Impressum', component: ImpressumComponent },
-
   { path: '**', component: HomeComponent }
 ];
 
