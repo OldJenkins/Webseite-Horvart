@@ -1,10 +1,8 @@
+<link href="https://fonts.googleapis.com/css2?family=Amatic+SC&display=swap" rel="stylesheet">
 <mat-grid-list cols="4" rowHeight="100px">
 
-    <mat-grid-tile
-        *ngFor="let tile of tiles2"
-        [colspan]="tile.cols"
-        [rowspan]="tile.rows"
-        [style.background]="tile.color">
-      {{tile.text}}
-    </mat-grid-tile>
-  </mat-grid-list>
+  <mat-grid-tile *ngFor="let tile of tiles2" [colspan]="tile.cols" [rowspan]="tile.rows"
+    [style.background]="tile.color">
+    <h2 style="color: azure;font-family: 'Amatic SC', cursive;">{{tile.text}}</h2>
+  </mat-grid-tile>
+</mat-grid-list>

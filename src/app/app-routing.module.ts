@@ -8,10 +8,11 @@ import { CarouselComponent } from './components/carousel/carousel.component';
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
 import { HomeComponent } from './home/home.component';
 import { GridComponent } from './components/grid/grid.component';
+import { SecondgridComponent } from './secondgrid/secondgrid.component';
 
 
 const routes: Routes = [
-  { path: 'Texts', component: TextSiteComponent },
+  { path: 'Texts', component: SecondgridComponent },
   { path: 'Images', component: GridComponent },
   { path: 'Users', component: UsersComponent },
   { path: 'Videos', component: VideoSiteComponent },

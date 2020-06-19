@@ -19,27 +19,27 @@ export class SecondgridComponent implements OnInit {
   textPost: TextPost[];
 
   tiles: Tile[] = [
-    {text: 'One', cols: 3, rows: 1, color: 'lightblue'},
-    {text: 'Two', cols: 1, rows: 2, color: 'lightgreen'},
-    {text: 'Three', cols: 1, rows: 1, color: 'lightpink'},
-    {text: 'Four', cols: 2, rows: 1, color: '#DDBDF1'},
+    { text: 'One', cols: 3, rows: 1, color: 'lightblue' },
+    { text: 'Two', cols: 1, rows: 2, color: 'lightgreen' },
+    { text: 'Three', cols: 1, rows: 1, color: 'lightpink' },
+    { text: 'Four', cols: 2, rows: 1, color: '#DDBDF1' },
   ];
 
   tiles2: Tile[] = [];
 
-  constructor(private textPostService: TextpostService) {}
+  constructor(private textPostService: TextpostService) { }
 
   ngOnInit(): void {
     let positionArray = [
-      {rows: 3, cols: 1, color: "#3a1879"},
-      {rows: 1, cols: 2, color: "#467cc6"},
-      {rows: 1, cols: 1, color: "#868d24"},
-      {rows: 2, cols: 1, color: "#d17d1a"},
+      { rows: 3, cols: 1, color: "#00897b" },
+      { rows: 1, cols: 2, color: "#00695c" },
+      { rows: 1, cols: 1, color: "#004d40" },
+      { rows: 2, cols: 1, color: "#00796b" },
 
-      {rows: 1, cols: 2, color: "#821f60"},
-      {rows: 3, cols: 1, color: "#a52c0d"},
-      {rows: 2, cols: 1, color: "#d17d1a"},
-      {rows: 1, cols: 1, color: "#3a1879"},
+      { rows: 1, cols: 2, color: "#004d40" },
+      { rows: 3, cols: 1, color: "#00695c" },
+      { rows: 2, cols: 1, color: "#00796b" },
+      { rows: 1, cols: 1, color: "#00897b" },
     ];
 
     this.textPostService.getTextPosts().subscribe(response => {
@@ -47,10 +47,10 @@ export class SecondgridComponent implements OnInit {
 
       let index = 0;
 
-      this.textPost.forEach(element => {                       
-        let tileObject = { text: element.content, cols: positionArray[index].cols, rows: positionArray[index].rows, color: positionArray[index].color }                        
+      this.textPost.forEach(element => {
+        let tileObject = { text: element.title, cols: positionArray[index].cols, rows: positionArray[index].rows, color: positionArray[index].color }
         this.tiles2.push(tileObject);
-        (index >= positionArray.length? index = 0 : index = index + 1);
+        (index >= positionArray.length ? index = 0 : index = index + 1);
       });
     })
   }
