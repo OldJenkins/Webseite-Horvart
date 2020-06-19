@@ -1,10 +1,21 @@
 .page-footer{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
     background-color: rgb(99, 110, 114);
+    flex-direction: column; 
+    margin-bottom: 50px;
+    
 }
 
 .footer-copyright{
+    position: absolute;
+    
+    width: 100%;
     background-color: rgb(45, 52, 54);
 }
+  
+  
 
 /* css wenn das Impressum nicht unterstrichen werden soll
 a:hover{

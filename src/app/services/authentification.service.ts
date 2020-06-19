@@ -91,8 +91,10 @@ export class AuthentificationService {
           if (element.isAdmin == true) {
             data.isAdmin = true;
             this.adminInfoService.setIsAdminLoggedIn(true); //Observable benachrichtigen: Admin eingeloggt
+            this.adminInfoService.setIsUserLoggedIn(true);
             return userRef.set(data, { merge: true })
           } else {
+            data.isAdmin = false;
             this.adminInfoService.setIsAdminLoggedIn(false);
             this.adminInfoService.setIsUserLoggedIn(true); //Observable benachrichtigen: User (ohne Admin) eingeloggt
             return userRef.set(data, { merge: true })
