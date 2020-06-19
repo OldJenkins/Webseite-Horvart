@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { TextPost } from '../models/TextPost';
-import { TextpostService } from '../services/textpost.service';
+import { TextPost } from '../../models/TextPost';
+import { TextpostService } from '../../services/textpost.service';
+import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { AdminInformationService } from '../../services/admin-information.service';
+import { TextDialogComponent } from '../secondgrid/text-dialog/text-dialog.component';
 
 export interface Tile {
   color: string;
@@ -27,7 +30,7 @@ export class SecondgridComponent implements OnInit {
 
   tiles2: Tile[] = [];
 
-  constructor(private textPostService: TextpostService) { }
+  constructor(private textPostService: TextpostService, public dialog: MatDialog, private adminService: AdminInformationService) { }
 
   ngOnInit(): void {
     let positionArray = [
@@ -53,6 +56,12 @@ export class SecondgridComponent implements OnInit {
         (index >= positionArray.length ? index = 0 : index = index + 1);
       });
     })
+  }
+
+  openDialogNewItem() {
+    this.dialog.open(TextDialogComponent, {
+      data: {}
+    });
   }
 
 }

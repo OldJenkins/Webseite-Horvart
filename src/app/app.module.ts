@@ -32,15 +32,16 @@ import { TextSiteComponent } from './components/text-site/text-site.component';
 import { TestnormanComponent } from './components/testnorman/testnorman.component';
 import { TestlunaComponent } from './components/testluna/testluna.component';
 import { TestmarcelComponent } from './components/testmarcel/testmarcel.component';
-import { SecondgridComponent } from './secondgrid/secondgrid.component';
+import { SecondgridComponent } from './components/secondgrid/secondgrid.component';
 import { MatVideoModule } from 'mat-video';
-import { HomeComponent } from './home/home.component';
+import { HomeComponent } from './components/home/home.component';
 import { AdminInformationService } from './services/admin-information.service';
 import { UserProfileComponent } from './components//user-profile/user-profile.component';
 import { AuthentificationService } from './services/authentification.service';
 import { DialogComponent } from './components/grid/dialog/dialog.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { VideoDialogComponent } from './components/video-site/video-dialog/video-dialog.component';
+import { TextDialogComponent } from './components/secondgrid/text-dialog/text-dialog.component';
 
 
 @NgModule({
@@ -66,7 +67,8 @@ import { VideoDialogComponent } from './components/video-site/video-dialog/video
     HomeComponent,
     UserProfileComponent,
     DialogComponent,
-    VideoDialogComponent
+    VideoDialogComponent,
+    TextDialogComponent
 
   ],
 

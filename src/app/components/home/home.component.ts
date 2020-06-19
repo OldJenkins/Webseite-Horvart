@@ -1,8 +1,8 @@
 import { Component, OnInit, AfterViewInit, ViewChild, ElementRef } from '@angular/core';
 import * as M from 'materialize-css/dist/js/materialize'
-import { AdminInformationService } from '../services/admin-information.service';
-import { ParallaxImageService } from '../services/parallax-image.service';
-import { ParallaxImagePost } from '../models/ParallaxImagePost';
+import { AdminInformationService } from '../../services/admin-information.service';
+import { ParallaxImageService } from '../../services/parallax-image.service';
+import { ParallaxImagePost } from '../../models/ParallaxImagePost';
 
 
 @Component({

@@ -1,4 +1,12 @@
 <link href="https://fonts.googleapis.com/css2?family=Amatic+SC&display=swap" rel="stylesheet">
+
+<!-- Add Button for the Admin mode -->
+<div style="margin: 30px;" *ngIf="!isAdmin">
+  <div class="center-align">
+    <a (click)="openDialogNewItem()" class="btn-floating btn-large waves-effect "><i class="material-icons">add</i></a>
+  </div>
+</div>
+
 <mat-grid-list cols="4" rowHeight="100px">
 
   <mat-grid-tile *ngFor="let tile of tiles2" [colspan]="tile.cols" [rowspan]="tile.rows"

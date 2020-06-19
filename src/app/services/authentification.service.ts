@@ -32,8 +32,8 @@ export class AuthentificationService {
 
 
 
-    this.userCollection = this.afs.collection('users');
-    this.users = this.afs.collection('users').snapshotChanges().pipe(map(changes => {
+    this.userCollection = this.afs.collection('user');
+    this.users = this.afs.collection('user').snapshotChanges().pipe(map(changes => {
       return changes.map(a => {
         const data = a.payload.doc.data() as User
         data.uid = a.payload.doc.id;
@@ -47,7 +47,7 @@ export class AuthentificationService {
       switchMap(user => {
         // Logged in
         if (user) {
-          return this.afs.doc<User>(`users/${user.uid}`).valueChanges();
+          return this.afs.doc<User>(`user/${user.uid}`).valueChanges();
         } else {
           // Logged out
           return of(null);
@@ -73,7 +73,7 @@ export class AuthentificationService {
 
 
   private updateUserData({ uid, email, displayName, photoURL, isAdmin }: User) {
-    const userRef: AngularFirestoreDocument<User> = this.afs.doc(`users/${uid}`);
+    const userRef: AngularFirestoreDocument<User> = this.afs.doc(`user/${uid}`);
 
     const data = {
       uid,

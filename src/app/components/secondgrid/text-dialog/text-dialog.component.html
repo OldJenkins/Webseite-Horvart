@@ -1,0 +1,48 @@
+<div id="container">
+
+
+
+
+
+    <!--Render the editing functionality-->
+    <div class="row">
+        <form class="col s12" (ngSubmit)="save(post);">
+            <div class="row">
+                <div class="input-field col s6">
+
+                    <input style="color:white;" class="blue-text text-darken-2" (change)="setSomeThingChangedToTrue()"
+                        [(ngModel)]="post.title" placeholder="{{post.title}}" id="first_name" type="text"
+                        class="validate" value="{{post.title}}" name="title">
+                    <label class="white-text" for="first_name">Titel Des Posts</label>
+
+                    <input style="color:white;" class="blue-text text-darken-2" (change)="setSomeThingChangedToTrue()"
+                        [(ngModel)]="post.description" placeholder="Inhalt" id="first_name" type="text" class="validate"
+                        value="{{post.description}}" name="title">
+                    <label class="white-text" for="first_name">Titel Des Posts</label>
+
+                </div>
+
+            </div>
+
+
+            <br>
+            <div class="right-align">
+                <div class="left-align">
+
+                    <!-- Only shown if you are editing -->
+                    <button *ngIF="!isNew" class="waves-effect deep-orange accent-3 btn" (click)="delete()">delete
+                        post</button>
+                </div>
+                <a style="margin-right: 10px;" (click)="cancel()"
+                    class="waves-effect waves-teal white-text btn-flat">Cancel</a>
+
+                <div *ngIf="someThingChanged"></div>
+                <input class="waves-effect light-green darken-3 btn" type="submit" value="save" />
+
+            </div>
+
+
+        </form>
+    </div>
+
+</div>

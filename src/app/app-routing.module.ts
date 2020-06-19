@@ -6,9 +6,9 @@ import { VideoSiteComponent } from './components/video-site/video-site.component
 import { UsersComponent } from './components/users/users.component';
 import { CarouselComponent } from './components/carousel/carousel.component';
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
-import { HomeComponent } from './home/home.component';
+import { HomeComponent } from './components/home/home.component';
 import { GridComponent } from './components/grid/grid.component';
-import { SecondgridComponent } from './secondgrid/secondgrid.component';
+import { SecondgridComponent } from './components/secondgrid/secondgrid.component';
 
 
 const routes: Routes = [
@@ -18,6 +18,7 @@ const routes: Routes = [
   { path: 'Videos', component: VideoSiteComponent },
   { path: 'carousel', component: CarouselComponent },
   { path: 'Login', component: UserProfileComponent },
+  { path: 'Home', component: HomeComponent },
   { path: '**', component: HomeComponent }
 ];
 
