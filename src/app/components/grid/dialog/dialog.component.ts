@@ -8,7 +8,6 @@ import { Observable } from 'rxjs';
 import { finalize, tap } from 'rxjs/operators';
 
 
-
 @Component({
   selector: 'app-dialog',
   templateUrl: './dialog.component.html',
@@ -37,6 +36,7 @@ export class DialogComponent {
     private storage: AngularFireStorage,
     private db: AngularFirestore) {
 
+    // Get the Data from the Parent
     this.post = data;
 
     // Check if you are creating a new post
@@ -44,17 +44,21 @@ export class DialogComponent {
       this.isNew = true;
     }
 
+    // Save The old url in case of aborting the dialog
     this.oldDownloadUrl = this.post.path;
   }
 
   onNoClick(): void {
-    console.log("nothing was clicked");
+    //nothing was clicked
+
     if (this.imageChanged) {
-      console.log("image has changed so delete");
+      //but Image was changed so delete from Storage
       this.storage.storage.refFromURL(this.downloadURL).delete();
       this.dialogRef.close();
+
     } else {
-      console.log("nothing was changed");
+
+      //nothing was changed so do nothing
       this.dialogRef.close();
     }
   }
@@ -65,10 +69,12 @@ export class DialogComponent {
     this.dialogRef.close();
   }
 
+  // Notice that something has changed
   setSomeThingChangedToTrue() {
     this.someThingChanged = true;
-    console.log("something has changed")
   }
+
+
 
   save(post: ImagePost) {
 
@@ -124,8 +130,6 @@ export class DialogComponent {
     // The storage path
     const name = `imageposts/${Date.now()}_${event.target.files[0].name}`;
 
-    console.log("image name: " + event.target.files[0].name);
-
     // Reference to storage bucket
     const ref = this.storage.ref(name);
 
@@ -135,13 +139,10 @@ export class DialogComponent {
     // Progress monitoring
     this.percentage = this.task.percentageChanges();
 
-    console.log("Starting upload");
-
     this.snapshot = this.task.snapshotChanges().pipe(
       tap(console.log),
       // The file's download URL
       finalize(async () => {
-        console.log("still waiting for finalize");
         this.downloadURL = await ref.getDownloadURL().toPromise();
 
         this.post.path = this.downloadURL;
@@ -161,6 +162,4 @@ export class DialogComponent {
   formatNumber(valueToFormat: string) {
     return Math.round(parseInt(valueToFormat) * 100) / 100 + "%";
   }
-
-
 }

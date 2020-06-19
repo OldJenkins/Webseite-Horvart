@@ -1,21 +1,22 @@
+<!-- Get all Image Post Items and display them in the grid-->
 <mat-grid-list role="list" cols="3" rowHeight="2:1">
 
   <div *ngFor='let image of imagePost; let i = index'>
+
+    <!-- Add a click listener for Admins-->
     <div *ngIf="i == 0 && isAdminLoggedIn">
       <mat-grid-tile>
         <a (click)="onAddPicToCarouselClicked()" class="btn-floating btn-large waves-effect ">
           <i class="material-icons">add</i></a>
-        <!--<i id="addPicToCarousel" class="material-icons">add</i>-->
+
       </mat-grid-tile>
     </div>
 
 
-
+    <!-- Add a click listener-->
     <mat-grid-tile (click)="onCardClick(image)" role="listitem">
       <img src={{image.path}}>
     </mat-grid-tile>
-
-
 
   </div>
 </mat-grid-list>
