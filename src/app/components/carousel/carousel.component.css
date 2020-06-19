@@ -3,8 +3,6 @@
 }
 
 .carousel {
-  position: relative;
-  height: 50%;
   width: 100%;
   overflow: hidden;
   border-radius: 0.5em;
