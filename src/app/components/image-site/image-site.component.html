@@ -1,46 +1,52 @@
 <h1> Images </h1>
 <div *ngIf="imageposts?.length > 0;else noImages">
-    <div class="row">
-        <div class="col s12 m6" *ngFor="let imagepost of imageposts">
-          <div class="card blue-grey darken-1">
-    
-            <div class="card-content white-text" [ngStyle]="{ 'background-image': 'url(' + imagepost.path + ')'}">
-                
-              <span class="card-title">{{imagepost.title}}</span>
-              
-              <div *ngIf="editState && imagepostToEdit.id == imagepost.id">
-                <form (ngSubmit)="updateImagepost(imagepost)">
-                    <div class="row">
-                        <div class="input-field col s6">
-                            <input type="text"  [(ngModel)]="imagepost.title" name="title">
-                            
-                        </div>
-        
-                        <div class="input-field col s6">
-                            <input type="text"  [(ngModel)]="imagepost.path" name="Content">
-                            
-        
-                        </div>
-                        <input type="submit" value="Update" class="btn orange">
-                        <button (click)="deleteItem($event,imagepost)"class="btn red">Delete</button>
-                    </div>
-                </form>
-            </div>
-              
-              
-            </div>
-            <div class="card-action" *ngIf="isAdmin">
-              <a (click)="editItem($event,imagepost)">Edit</a>
-              <a (click)="closeItem()">Minimize</a>
-        
-            </div>
+  <div class="row">
+    <div class="col s12 m6" *ngFor="let imagepost of imageposts">
+      <div class="card blue-grey darken-1">
+
+        <div class="card-content white-text" [ngStyle]="{ 'background-image': 'url(' + imagepost.path + ')'}">
+
+          <span class="card-title">{{imagepost.title}}</span>
+
+          <div *ngIf="editState && imagepostToEdit.id == imagepost.id">
+            <form (ngSubmit)="updateImagepost(imagepost)">
+              <div class="row">
+                <div class="input-field col s6">
+                  <input type="text" [(ngModel)]="imagepost.title" name="title">
+
+                </div>
+
+                <div class="input-field col s6">
+                  <input type="text" [(ngModel)]="imagepost.path" name="Content">
+
+
+                </div>
+                <input type="submit" value="Update" class="btn orange">
+                <button (click)="deleteItem($event,imagepost)" class="btn red">Delete</button>
+
+
+
+
+              </div>
+            </form>
           </div>
+        </div>
+
+        <div class="card-action" *ngIf="isAdmin">
+          <a (click)="editItem($event,imagepost)">Edit</a>
+          <a (click)="closeItem()">Minimize</a>
         </div>
       </div>
     </div>
-    
-    <ng-template #noImages>
-        <hr>
-        <h5>  Ther are no Posts existing</h5>
-    </ng-template>
-    
+  </div>
+</div>
+
+<div class="container">
+
+
+</div>
+
+<ng-template #noImages>
+  <hr>
+  <h5> Ther are no Posts existing</h5>
+</ng-template>

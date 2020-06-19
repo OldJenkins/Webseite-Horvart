@@ -1,0 +1,26 @@
+<!-- carousel -->
+
+<div class="carousel">
+  <ng-container *ngFor="let pic of images; let i = index">
+    <img *ngIf="i === currentSlide" [src]="pic.path" class="slide" @carouselAnimation />
+  </ng-container>
+
+  <!-- controls -->
+  <button class="control prev" (click)="onPreviousClick()">
+    <span class="arrow left"></span>
+  </button>
+  <button class="control next" (click)="onNextClick()">
+    <span class="arrow right"></span>
+  </button>
+</div>
+
+<div *ngIf="isAdminLoggedIn">
+  <div *ngIf="!cropperVisible">
+    <button id="cropperMenu" (click)="showCropper()">+</button>
+  </div>
+
+  <div *ngIf="cropperVisible">
+    <button id="cropperMenu" (click)="hideCropper()">-</button>
+    <app-cropper></app-cropper>
+  </div>
+</div>

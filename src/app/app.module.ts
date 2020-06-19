@@ -1,54 +1,67 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule} from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { CarouselComponent } from './carousel/carousel.component';
+import { CarouselComponent } from './components/carousel/carousel.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ImageCropperModule } from 'ngx-image-cropper';
-import { CardComponent } from './card/card.component';
-import { CropperComponent } from './cropper/cropper.component';
-import { GridComponent } from './grid/grid.component';
-import {MatGridListModule} from '@angular/material/grid-list';
+import { CardComponent } from './components/./card/card.component';
+import { CropperComponent } from './components/./cropper/cropper.component';
+import { GridComponent } from './components/./grid/grid.component';
+import { MatGridListModule } from '@angular/material/grid-list';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AngularFireModule } from 'angularfire2';
-import { AngularFirestoreModule } from'angularfire2/firestore';
+import { AngularFirestoreModule } from 'angularfire2/firestore';
+import { AngularFireStorageModule } from '@angular/fire/storage';
+import { AngularFireAuthModule } from '@angular/fire/auth';
 import { environment } from '../environments/environment';
-import { UserService } from './services/user.service';
-import { UsersComponent } from './components/users/users.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
-import { AddItemComponent } from './components/add-item/add-item.component';
 import { ImagepostService } from './services/imagepost.service';
 import { VideopostService } from './services/videopost.service';
 import { TextpostService } from './services/textpost.service';
 import { MaincontainerComponent } from './components/maincontainer/maincontainer.component';
-import { ContentComponent } from './components/content/content.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { ImageSiteComponent } from './components/image-site/image-site.component';
 import { VideoSiteComponent } from './components/video-site/video-site.component';
 import { TextSiteComponent } from './components/text-site/text-site.component';
+import { SecondgridComponent } from './components/secondgrid/secondgrid.component';
+import { MatVideoModule } from 'mat-video';
+import { HomeComponent } from './components/home/home.component';
+import { AdminInformationService } from './services/admin-information.service';
+import { UserProfileComponent } from './components//user-profile/user-profile.component';
+import { AuthentificationService } from './services/authentification.service';
+import { DialogComponent } from './components/grid/dialog/dialog.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { VideoDialogComponent } from './components/video-site/video-dialog/video-dialog.component';
+import { TextDialogComponent } from './components/secondgrid/text-dialog/text-dialog.component';
+import { ImpressumComponent } from './components/impressum/impressum.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-
     CarouselComponent,
     CardComponent,
     CropperComponent,
     GridComponent,
-    UsersComponent,
     NavbarComponent,
-    AddItemComponent,
     MaincontainerComponent,
-    ContentComponent,
     FooterComponent,
     ImageSiteComponent,
     VideoSiteComponent,
-    TextSiteComponent
-    
+    TextSiteComponent,
+    SecondgridComponent,
+    HomeComponent,
+    UserProfileComponent,
+    DialogComponent,
+    VideoDialogComponent,
+    TextDialogComponent,
+    ImpressumComponent
 
   ],
+
+  entryComponents: [DialogComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -57,14 +70,16 @@ import { TextSiteComponent } from './components/text-site/text-site.component';
     BrowserAnimationsModule,
     FormsModule,
     ImageCropperModule,
-    BrowserAnimationsModule,
-    FormsModule,
     AngularFireModule.initializeApp(environment.firebase),
-    AngularFirestoreModule
-    
-
+    AngularFirestoreModule,
+    AngularFireStorageModule,
+    AngularFireAuthModule,
+    AngularFirestoreModule.enablePersistence(),
+    MatVideoModule,
+    MatDialogModule
   ],
-  providers: [UserService,ImagepostService,VideopostService,TextpostService],
+
+  providers: [ImagepostService, VideopostService, TextpostService, AdminInformationService, AuthentificationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

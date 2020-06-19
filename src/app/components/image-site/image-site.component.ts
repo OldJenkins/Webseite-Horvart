@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { ImagePost } from'../../models/ImagePost';
+import { Component, OnInit, Input } from '@angular/core';
+import { ImagePost } from '../../models/ImagePost';
 import { ImagepostService } from 'src/app/services/imagepost.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-image-site',
@@ -13,7 +14,11 @@ export class ImageSiteComponent implements OnInit {
   editState: boolean = false;
   imagepostToEdit: ImagePost;
 
-  isAdmin : boolean = true;
+  isAdmin: boolean = true;
+
+
+  files: File[] = [];
+
 
   constructor(private imagepostService: ImagepostService) { }
 
@@ -23,22 +28,24 @@ export class ImageSiteComponent implements OnInit {
     });
   }
 
-  deleteItem(event, imagepost: ImagePost){
-    this.closeItem();
-    this.imagepostService.deleteImagepost(imagepost);
+  deleteItem(event, imagepost: ImagePost) {
+    if (confirm("Are you sure to delete " + imagepost.title + "?")) {
+      this.closeItem();
+      this.imagepostService.deleteImagepost(imagepost);
+    }
   }
 
-  editItem(event, textpost: ImagePost){
+  editItem(event, textpost: ImagePost) {
     this.editState = true;
     this.imagepostToEdit = textpost;
   }
 
-  updateImagepost(imagepost: ImagePost){
+  updateImagepost(imagepost: ImagePost) {
     this.imagepostService.updateImagepost(imagepost);
     this.closeItem();
   }
 
-  closeItem(){
+  closeItem() {
     this.editState = false;
   }
 

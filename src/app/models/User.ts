@@ -1,7 +1,7 @@
-export interface User{
-    id?:string;
-    name?:string;
-    mail?:string;
-    
+export interface User {
+    uid?: string;
+    email?: string;
+    displayName?: string;
+    photoURL?: string;
+    isAdmin?: boolean;
 }
-  

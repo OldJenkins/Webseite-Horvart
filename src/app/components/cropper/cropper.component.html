@@ -1,0 +1,29 @@
+<div id="cropperContainer" *ngIf="administrator === true">
+    <div id="cropperEdit" class="row">
+        <div id="preview" class="row"></div>
+        <div id="editButtons" class="row">
+
+            <image-cropper style="max-height: 800px;max-width: 600px;" [imageChangedEvent]="imageChangedEvent"
+                [imageURL]="post.path" [maintainAspectRatio]="true" [aspectRatio]="4 / 3" format="jpeg"
+                [transform]="transform" (imageCropped)="imageCropped($event)" (imageLoaded)="imageLoaded()"
+                [canvasRotation]="canvasRotation" (cropperReady)="cropperReady()" (loadImageFailed)="loadImageFailed()">
+            </image-cropper>
+
+
+            <label id="label" for="file" class="cropperEditButtons">Upload</label>
+            <input id="file" style="display: none;" type="file" (change)="fileChangeEvent($event)" />
+
+
+            <button class="cropperEditButtons" (click)="rotateRight()">Rotate right</button>
+
+            <button class="cropperEditButtons" (click)="zoomOut()">Zoom -</button>
+            <button class="cropperEditButtons" (click)="zoomIn()">Zoom +</button>
+        </div>
+    </div>
+
+    <!-- SAVE / CANCEL-->
+    <div id="cropperSave" class="row">
+        <button class="cropperSaveButtons" id="cancelButton" (click)="resetImage()">CANCEL</button>
+        <button class="cropperSaveButtons" id="saveButton" (click)="onSaveToCarousel()">SAVE</button>
+    </div>
+</div>
