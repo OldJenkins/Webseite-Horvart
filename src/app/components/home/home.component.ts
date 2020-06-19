@@ -5,6 +5,7 @@ import { ParallaxImageService } from '../../services/parallax-image.service';
 import { ParallaxImagePost } from '../../models/ParallaxImagePost';
 
 
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -15,7 +16,11 @@ export class HomeComponent implements OnInit, AfterViewInit {
   isAdminLoggedIn: boolean = false;
   images: ParallaxImagePost[];
 
-  constructor(private adminService: AdminInformationService, private parallaxService: ParallaxImageService) { }
+  constructor(private adminService: AdminInformationService, private parallaxService: ParallaxImageService) {
+
+
+
+  }
 
   @ViewChild('parallax') parallax: ElementRef;
   @ViewChild('parallax2') parallax2: ElementRef;
@@ -23,6 +28,9 @@ export class HomeComponent implements OnInit, AfterViewInit {
 
 
   ngOnInit(): void {
+
+
+
     this.adminService.getIsAdminLoggedIn().subscribe(value => {
       this.isAdminLoggedIn = value;
     })

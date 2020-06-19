@@ -33,6 +33,9 @@ export class CarouselComponent implements OnInit {
   ngOnInit() {
     this.picService.getImagePosts().subscribe(pics => {
       this.images = pics;
+      console.log("Bilder geladen");
+      console.log(this.images);
+      console.log("Feddisch");
     })
     this.adminService.getIsAdminLoggedIn().subscribe(value => {
       this.isAdminLoggedIn = value;

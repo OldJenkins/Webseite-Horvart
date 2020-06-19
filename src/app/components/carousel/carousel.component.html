@@ -1,4 +1,5 @@
 <!-- carousel -->
+
 <div class="carousel">
   <ng-container *ngFor="let pic of images; let i = index">
     <img *ngIf="i === currentSlide" [src]="pic.path" class="slide" @carouselAnimation />
