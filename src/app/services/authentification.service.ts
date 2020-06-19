@@ -15,7 +15,7 @@ import { switchMap } from 'rxjs/operators';
 })
 export class AuthentificationService {
 
-
+  userExists = false;
 
   user$: Observable<User>;
   // user$: Observable<User>;
@@ -36,15 +36,22 @@ export class AuthentificationService {
       })
     )
 
-
   }
 
 
   async googleSignin() {
     const provider = new auth.GoogleAuthProvider();
     const credential = await this.afAuth.auth.signInWithPopup(provider);
+
+    credential.user.email
+
+
     return this.updateUserData(credential.user);
   }
+
+
+
+
 
   private updateUserData({ uid, email, displayName, photoURL, isAdmin }: User) {
     // Sets user data to firestore on login

@@ -1,19 +1,22 @@
 <div id="container">
 
 
-
-    <div *ngIf="!isNew || imageChanged">
+    <!-- Show current Video if we are editing-->
+    <div *ngIf="!isNew || videoChanged">
         <div class="hide-on-med-and-up">
-            <img style="max-width: 200px;max-height: 200px;" src="{{post.path}}" />
+            <video style="max-width: 300px;max-height: 300px;" class="responsive-video" controls>
+                <source src="{{post.path}}" type="video/mp4">
+            </video>
         </div>
         <div class="hide-on-small-only">
-            <img style="max-width: 450px;max-height: 500px;" src="{{post.path}}" />
+            <video style="max-width: 450px;max-height: 500px;" class="responsive-video" controls>
+                <source src="{{post.path}}" type="video/mp4">
+            </video>
         </div>
     </div>
 
 
-
-
+    <!--Render the editing functionality-->
     <div class="row">
         <form class="col s12" (ngSubmit)="save(post);">
             <div class="row">
@@ -24,21 +27,20 @@
                         class="validate" value="{{post.title}}" name="title">
                     <label class="white-text" for="first_name">Titel Des Posts</label>
 
+                    <input style="color:white;" class="blue-text text-darken-2" (change)="setSomeThingChangedToTrue()"
+                        [(ngModel)]="post.description" placeholder="Beschreibung" id="first_name" type="text"
+                        class="validate" value="{{post.description}}" name="title">
+                    <label class="white-text" for="first_name">Titel Des Posts</label>
+
                 </div>
 
             </div>
             <div class="left-align">
 
 
-                <h6 class="white-text">Bild ändern</h6>
-                <input style="color:white;" name="currentInput" value="Change image" class="file-input" type="file"
+                <h6 class="white-text">Video ändern</h6>
+                <input style="color:white;" name="currentInput" value="Change video" class="file-input" type="file"
                     (change)="startUpload($event);setSomeThingChangedToTrue()">
-
-
-
-                <!--
-                <app-cropper  [post]="post"></app-cropper>
-                -->
 
                 <div [hidden]="pct>99" *ngIf="percentage | async as pct">
 
@@ -54,7 +56,9 @@
             <br>
             <div class="right-align">
                 <div class="left-align">
-                    <button *ngIf="!isNew" class="waves-effect deep-orange accent-3 btn" (click)="delete()">delete
+
+                    <!-- Only shown if you are editing -->
+                    <button *ngIF="!isNew" class="waves-effect deep-orange accent-3 btn" (click)="delete()">delete
                         post</button>
                 </div>
                 <a style="margin-right: 10px;" (click)="cancel()"

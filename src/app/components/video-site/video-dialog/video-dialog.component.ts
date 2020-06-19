@@ -1,7 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { ImagePost } from '../../../models/ImagePost';
-import { ImagepostService } from 'src/app/services/imagepost.service';
+import { VideoPost } from '../../../models/VideoPost';
+import { VideopostService } from 'src/app/services/videopost.service';
 import { AngularFirestore } from 'angularfire2/firestore';
 import { AngularFireStorage, AngularFireUploadTask } from '@angular/fire/storage';
 import { Observable } from 'rxjs';
@@ -10,19 +10,20 @@ import { finalize, tap } from 'rxjs/operators';
 
 
 @Component({
-  selector: 'app-dialog',
-  templateUrl: './dialog.component.html',
+  selector: 'app-video-dialog',
+  templateUrl: './video-dialog.component.html',
+  styleUrls: ['./video-dialog.component.css']
 })
-export class DialogComponent {
+export class VideoDialogComponent implements OnInit {
 
-  post: ImagePost;
+  post: VideoPost;
 
   task: AngularFireUploadTask;
 
   percentage: Observable<number>;
   snapshot: Observable<any>;
 
-  imageChanged: boolean = false;
+  videoChanged: boolean = false;
   someThingChanged: boolean = false;
 
   downloadURL: string;
@@ -31,9 +32,9 @@ export class DialogComponent {
   isNew: boolean;
 
   constructor(
-    public dialogRef: MatDialogRef<DialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: ImagePost,
-    public imagepostService: ImagepostService,
+    public dialogRef: MatDialogRef<VideoDialogComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: VideoPost,
+    public videopostService: VideopostService,
     private storage: AngularFireStorage,
     private db: AngularFirestore) {
 
@@ -47,20 +48,12 @@ export class DialogComponent {
     this.oldDownloadUrl = this.post.path;
   }
 
-  onNoClick(): void {
-    console.log("nothing was clicked");
-    if (this.imageChanged) {
-      console.log("image has changed so delete");
-      this.storage.storage.refFromURL(this.downloadURL).delete();
-      this.dialogRef.close();
-    } else {
-      console.log("nothing was changed");
-      this.dialogRef.close();
-    }
+  ngOnInit(): void {
   }
 
+
   delete() {
-    this.imagepostService.deleteImagepost(this.post);
+    this.videopostService.deleteVideopost(this.post);
     this.storage.storage.refFromURL(this.downloadURL).delete();
     this.dialogRef.close();
   }
@@ -70,7 +63,7 @@ export class DialogComponent {
     console.log("something has changed")
   }
 
-  save(post: ImagePost) {
+  save(post: VideoPost) {
 
     if (!this.isNew) {
       console.log("trying to save");
@@ -78,14 +71,14 @@ export class DialogComponent {
       if (this.someThingChanged) {
         console.log("something has changed");
         //Only change the image if it was really changed
-        if (this.imageChanged) {
+        if (this.videoChanged) {
           console.log("image has changed");
           post.path = this.downloadURL;
           this.storage.storage.refFromURL(this.oldDownloadUrl).delete();
           console.log("deleted from storage");
         }
 
-        this.imagepostService.updateImagepost(post);
+        this.videopostService.updateVideopost(post);
         console.log("updated image");
       }
     } else {
@@ -94,12 +87,12 @@ export class DialogComponent {
       if (this.someThingChanged) {
         console.log("something has changed");
         //Only change the image if it was really changed
-        if (this.imageChanged) {
+        if (this.videoChanged) {
           console.log("image has changed");
           post.path = this.downloadURL;
         }
         post.timestamp = Date.now();
-        this.imagepostService.addImagePost(post);
+        this.videopostService.addVideoPost(post);
         console.log("added image");
       }
     }
@@ -108,7 +101,7 @@ export class DialogComponent {
 
   cancel() {
     console.log("cancel was clicked");
-    if (this.imageChanged) {
+    if (this.videoChanged) {
       console.log("image has changed so delete");
       this.storage.storage.refFromURL(this.downloadURL).delete();
       this.dialogRef.close();
@@ -122,9 +115,9 @@ export class DialogComponent {
 
     this.post.path = event.target.files[0].name;
     // The storage path
-    const name = `imageposts/${Date.now()}_${event.target.files[0].name}`;
+    const name = `videoposts/${Date.now()}_${event.target.files[0].name}`;
 
-    console.log("image name: " + event.target.files[0].name);
+    console.log("video name: " + event.target.files[0].name);
 
     // Reference to storage bucket
     const ref = this.storage.ref(name);
@@ -145,7 +138,7 @@ export class DialogComponent {
         this.downloadURL = await ref.getDownloadURL().toPromise();
 
         this.post.path = this.downloadURL;
-        this.imageChanged = true;
+        this.videoChanged = true;
       }),
     );
 
@@ -161,6 +154,5 @@ export class DialogComponent {
   formatNumber(valueToFormat: string) {
     return Math.round(parseInt(valueToFormat) * 100) / 100 + "%";
   }
-
 
 }

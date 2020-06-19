@@ -1,6 +1,8 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, Input } from '@angular/core';
 import { Dimensions, ImageCroppedEvent, ImageTransform } from 'ngx-image-cropper';
 import { AdminInformationService } from 'src/app/services/admin-information.service';
+import { ImagePost } from '../../models/ImagePost';
+
 
 
 @Component({
@@ -10,22 +12,40 @@ import { AdminInformationService } from 'src/app/services/admin-information.serv
 })
 export class CropperComponent implements OnInit {
 
+  @Input() post: ImagePost;
+
+  isUpdating: boolean = false;
+
+
+
   constructor(private adminService: AdminInformationService) {
   }
 
   ngOnInit(): void {
     this.adminService.getIsAdminLoggedIn().subscribe(value => {
       this.administrator = value;
+      if (this.post) {
+        this.isUpdating = true;
+        this.fileChangeEvent(this.post);
+        this.croppedImage = this.post.path;
+        this.showCropper = true;
+        console.log("cropper müsste ein bild haben: " + this.post.path)
+
+
+
+      }
     })
   }
+
+
 
   administrator: boolean = true;
   showCropper = false;
 
   imageChangedEvent: any = '';
-  croppedImage: any = '';
+  croppedImage: any;
 
-  //Lex rettet die Welt
+
   canvasRotation = 0;
   transform: ImageTransform = {};
   rotation = 0;
@@ -36,6 +56,7 @@ export class CropperComponent implements OnInit {
   }
   imageCropped(event: ImageCroppedEvent) {
     this.croppedImage = event.base64;
+    console.log("imageCropped getriggerd: " + this.croppedImage);
   }
   imageLoaded() {
     this.showCropper = true;

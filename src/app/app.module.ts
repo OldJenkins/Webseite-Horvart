@@ -34,14 +34,13 @@ import { TestlunaComponent } from './components/testluna/testluna.component';
 import { TestmarcelComponent } from './components/testmarcel/testmarcel.component';
 import { SecondgridComponent } from './secondgrid/secondgrid.component';
 import { MatVideoModule } from 'mat-video';
-import { ImageUploadTaskComponent } from './components/image-site/image-upload-task/image-upload-task.component';
-import { VideoUploadTaskComponent } from './components/video-site/video-upload-task/video-upload-task.component';
 import { HomeComponent } from './home/home.component';
 import { AdminInformationService } from './services/admin-information.service';
 import { UserProfileComponent } from './components//user-profile/user-profile.component';
 import { AuthentificationService } from './services/authentification.service';
 import { DialogComponent } from './components/grid/dialog/dialog.component';
 import { MatDialogModule } from '@angular/material/dialog';
+import { VideoDialogComponent } from './components/video-site/video-dialog/video-dialog.component';
 
 
 @NgModule({
@@ -64,11 +63,10 @@ import { MatDialogModule } from '@angular/material/dialog';
     TestlunaComponent,
     TestmarcelComponent,
     SecondgridComponent,
-    ImageUploadTaskComponent,
-    VideoUploadTaskComponent,
     HomeComponent,
     UserProfileComponent,
-    DialogComponent
+    DialogComponent,
+    VideoDialogComponent
 
   ],
 
