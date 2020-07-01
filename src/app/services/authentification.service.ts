@@ -31,7 +31,6 @@ export class AuthentificationService {
     private afs: AngularFirestore,
     private adminInfoService: AdminInformationService,
     private router: Router) {
-
     this.userCollection = this.afs.collection('user');
     this.users = this.afs.collection('user').snapshotChanges().pipe(map(changes => {
       return changes.map(a => {
@@ -43,10 +42,25 @@ export class AuthentificationService {
 
 
     this.user$ = this.afAuth.authState.pipe(
-      switchMap(user => {
+      switchMap(gUser => {         
         // Logged in
-        if (user) {
-          return this.afs.doc<User>(`user/${user.uid}`).valueChanges();
+        if (gUser) {
+
+          this.users.subscribe(response => {
+            let user: any[] = response;
+            
+            let foundUser = user.find(element => element.uid == gUser.uid);
+
+            if (foundUser == undefined) {
+              this.adminInfoService.setIsAdminLoggedIn(false);
+              this.adminInfoService.setIsUserLoggedIn(true);
+            } else if (foundUser.isAdmin == true) {
+              this.adminInfoService.setIsAdminLoggedIn(true);
+              this.adminInfoService.setIsUserLoggedIn(true);
+            }
+          })
+
+          return this.afs.doc<User>(`user/${gUser.uid}`).valueChanges();
         } else {
           // Logged out
           return of(null);
