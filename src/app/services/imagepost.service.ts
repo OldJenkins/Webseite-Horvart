@@ -19,6 +19,9 @@ export class ImagepostService {
     //this.usersCollection = this.afs.collection('User');
 
     this.imagepostsCollection = this.afs.collection('imagepost');
+
+
+
     this.imageposts = this.afs.collection('imagepost').snapshotChanges().pipe(map(changes => {
       return changes.map(a => {
         const data = a.payload.doc.data() as ImagePost

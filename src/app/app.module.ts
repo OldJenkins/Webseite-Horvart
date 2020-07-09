@@ -8,7 +8,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ImageCropperModule } from 'ngx-image-cropper';
 import { CardComponent } from './components/./card/card.component';
 import { CropperComponent } from './components/./cropper/cropper.component';
-import { GridComponent } from './components/./grid/grid.component';
+import { ImageSiteComponent } from './components/./image-site/image-site.component';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AngularFireModule } from 'angularfire2';
@@ -23,16 +23,16 @@ import { TextpostService } from './services/textpost.service';
 import { MaincontainerComponent } from './components/maincontainer/maincontainer.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { VideoSiteComponent } from './components/video-site/video-site.component';
-import { SecondgridComponent } from './components/secondgrid/secondgrid.component';
+import { TextSiteComponent } from './components/text-site/text-site.component';
 import { MatVideoModule } from 'mat-video';
 import { HomeComponent } from './components/home/home.component';
 import { AdminInformationService } from './services/admin-information.service';
 import { UserProfileComponent } from './components//user-profile/user-profile.component';
 import { AuthentificationService } from './services/authentification.service';
-import { DialogComponent } from './components/grid/dialog/dialog.component';
+import { DialogComponent } from './components/image-site/dialog/dialog.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { VideoDialogComponent } from './components/video-site/video-dialog/video-dialog.component';
-import { TextDialogComponent } from './components/secondgrid/text-dialog/text-dialog.component';
+import { TextDialogComponent } from './components/text-site/text-dialog/text-dialog.component';
 import { ImpressumComponent } from './components/impressum/impressum.component';
 
 
@@ -42,12 +42,12 @@ import { ImpressumComponent } from './components/impressum/impressum.component';
     CarouselComponent,
     CardComponent,
     CropperComponent,
-    GridComponent,
+    ImageSiteComponent,
     NavbarComponent,
     MaincontainerComponent,
     FooterComponent,
     VideoSiteComponent,
-    SecondgridComponent,
+    TextSiteComponent,
     HomeComponent,
     UserProfileComponent,
     DialogComponent,

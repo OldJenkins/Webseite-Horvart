@@ -3,7 +3,7 @@ import { TextPost } from '../../models/TextPost';
 import { TextpostService } from '../../services/textpost.service';
 import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { AdminInformationService } from '../../services/admin-information.service';
-import { TextDialogComponent } from '../secondgrid/text-dialog/text-dialog.component';
+import { TextDialogComponent } from '../text-site/text-dialog/text-dialog.component';
 
 
 // Custom Model Representing the Content of One Tile
@@ -16,13 +16,13 @@ export interface Tile {
 }
 
 @Component({
-  selector: 'app-secondgrid',
-  templateUrl: './secondgrid.component.html',
-  styleUrls: ['./secondgrid.component.css']
+  selector: 'app-text-site',
+  templateUrl: './text-site.component.html',
+  styleUrls: ['./text-site.component.css']
 })
 
 
-export class SecondgridComponent implements OnInit {
+export class TextSiteComponent implements OnInit {
 
   textPosts: TextPost[];
   dummyPost: TextPost = { id: '0', description: '0', title: '0', timestamp: 0 };
@@ -74,7 +74,8 @@ export class SecondgridComponent implements OnInit {
 
       //Clear array else you will alwasy add the whole existing array
       this.tiles2 = [];
-      this.textPosts = response;
+      this.textPosts = response.sort((a, b) => b.timestamp - a.timestamp);
+
 
       let index = 0;
 

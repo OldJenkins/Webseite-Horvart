@@ -14,6 +14,8 @@ export class TextpostService {
   constructor(public afs: AngularFirestore) {
 
     this.textpostsCollection = this.afs.collection('textpost');
+
+
     this.textposts = this.afs.collection('textpost').snapshotChanges().pipe(map(changes => {
       return changes.map(a => {
         const data = a.payload.doc.data() as TextPost
