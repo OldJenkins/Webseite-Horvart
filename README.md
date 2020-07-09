@@ -6,6 +6,13 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
+## Database
+
+The Database is created an hosted with Google Firebase https://firebase.google.com/
+If you want to switch between firesbase accounts, you simply have to recreate the existing Table structure.
+Then you can go into your Projects environments Folder and change the firebase metadata.
+Done!
+
 ## Code scaffolding
 
 Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
