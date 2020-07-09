@@ -7,11 +7,11 @@ import { DialogComponent } from './dialog/dialog.component';
 import { CardComponent } from '../card/card.component';
 
 @Component({
-  selector: 'app-grid',
-  templateUrl: './grid.component.html',
-  styleUrls: ['./grid.component.css']
+  selector: 'app-image-site',
+  templateUrl: './image-site.component.html',
+  styleUrls: ['./image-site.component.css']
 })
-export class GridComponent implements OnInit {
+export class ImageSiteComponent implements OnInit {
 
   imagePost: ImagePost[];
   isAdminLoggedIn: boolean;
@@ -27,11 +27,19 @@ export class GridComponent implements OnInit {
 
     // Initialize all Services
     this.imagePostService.getImagePosts().subscribe(response => {
-      this.imagePost = response;
+      console.log(response);
+      this.imagePost = response.sort((a, b) => b.timestamp - a.timestamp);
+      console.log(this.imagePost);
+
+      this.imagePost.forEach(element => {
+        let date = new Date(element.timestamp);
+        console.log(date);
+      });
     });
     this.adminService.getIsAdminLoggedIn().subscribe(value => {
       this.isAdminLoggedIn = value;
     });
+
   }
 
 

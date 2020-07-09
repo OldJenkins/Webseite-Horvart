@@ -43,8 +43,10 @@
 
 <!--Parallax-->
 <div class="parallax-container">
+    <!--
     <i class="material-icons" id="editParallaxButton" *ngIf="isAdminLoggedIn"
         (click)="onEditParallaxPictureClicked(1)">create</i>
+        -->
     <div class="parallax">
         <div #parallax>
             <img src="{{images[0].path}}">
@@ -64,14 +66,16 @@
         <h5 id="authorParallax">~ Toni Morrison</h5>
     </div>
     <div id="showTexts">
-        <a class="waves-effect waves-light btn" [routerLink]="'[../Texts]'" routerLinkActive="active">See the videos</a>
+        <a class="waves-effect waves-light btn" [routerLink]="['../Texts']" routerLinkActive="active">See the Texts</a>
     </div>
 </div>
 
 <!-- Parallax Again-->
 <div class="parallax-container">
+    <!--
     <i *ngIf="isAdminLoggedIn" class="material-icons" id="editParallaxButton"
         (click)="onEditParallaxPictureClicked(2)">create</i>
+        -->
     <div class="parallax">
         <div #parallax2>
             <img src="{{images[1].path}}"></div>

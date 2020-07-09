@@ -29,7 +29,7 @@ export class VideoSiteComponent implements OnInit {
 
     // Get VideoPosts
     this.videoPostService.getVideoPosts().subscribe(response => {
-      this.videoPosts = response;
+      this.videoPosts = response.sort((a, b) => b.timestamp - a.timestamp);
     });
 
     // Get Current Admin State

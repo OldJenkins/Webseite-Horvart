@@ -27,9 +27,11 @@ export class TextDialogComponent implements OnInit {
     public textpostService: TextpostService,
     private adminService: AdminInformationService) {
 
+    this.post = data;
     // Check if you are creating a new post
     if (!data.id) {
       this.isNew = true;
+
       console.log("nichts da & es ist neu");
     } else {
       this.post = data;
@@ -39,6 +41,8 @@ export class TextDialogComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
+
 
     // Get Current Admin State
     this.adminService.getIsAdminLoggedIn().subscribe(value => {
@@ -56,14 +60,14 @@ export class TextDialogComponent implements OnInit {
     //something has changed
   }
 
-  save(post: TextPost) {
+  save() {
 
     if (!this.isNew) {
 
       //Only make you update query if something really has changes, to minimize server usage
       if (this.someThingChanged) {
         //something has changed
-        this.textpostService.updateTextpost(post);
+        this.textpostService.updateTextpost(this.post);
 
       }
     } else {
@@ -71,9 +75,10 @@ export class TextDialogComponent implements OnInit {
       //Only make you update query if something really has changes, to minimize server usage
       if (this.someThingChanged) {
 
+
         //something has changed
-        post.timestamp = Date.now();
-        this.textpostService.addTextPost(post);
+        this.post.timestamp = Date.now();
+        this.textpostService.addTextPost(this.post);
         console.log("added Post");
       }
     }
